@@ -12,7 +12,7 @@ class View{
             throw new Exception('Not found router');
         }
         $controller_dir=$router->getController();
-        $template_name=$router->getMethodPrefix().$router->getAction().'.html';
+        $template_name=$router->getMethodPrefix().$router->getAction().'.php';
         return VIEW_PATH.DS.$controller_dir.DS.$template_name;
     }
 
@@ -31,16 +31,11 @@ class View{
     public function render(){
         $data=$this->data;
         ob_start();
+        include VIEW_PATH.DS.'header.php';
         include ($this->path);
+        include VIEW_PATH.DS.'footer.php';
         $content=ob_get_clean();
         return $content;
     }
 
-    /**
-     * @return array
-     */
-    public function getData()
-    {
-        return $this->data;
-    }
 }

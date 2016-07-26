@@ -1,3 +1,3 @@
 this is news/admin_list.html
 <br/>
-<?=$data['content']?>
+<?=$data['test_content']?>

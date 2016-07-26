@@ -23,12 +23,9 @@ class App
             $view_object= new View($controller_object->getData(),$view_path);
            //иклуд файла и передача в его инфы
             $content=$view_object->render();
+            echo $content;
         }else{
-            throw new Exception('there is no '.$method_name.' in controller :'. $class_name);
+            throw new Exception('there is no Method : '.$method_name.' in controller :'. $class_name);
         }
-         $layout_path=VIEW_PATH.DS.'default.html';
-        //var_dump(compact('content'));//--возвращает все из переменной 'content',результат будет строка        
-         $layout_view_object=new View(compact('content'),$layout_path);
-         echo $layout_view_object->render();
     }
 }
