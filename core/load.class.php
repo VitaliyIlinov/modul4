@@ -8,6 +8,7 @@ function __autoload($class_name)
     //$controllers_path = ROOT . DS . 'controllers' . DS . '.controller.php';
     $controllers_path = ROOT . DS . 'controllers' . DS . str_replace('controller', '', strtolower($class_name)) . '.controller.php';
     $model_path = ROOT . DS . 'models' . DS . strtolower($class_name) . '.php';
+
     if (file_exists($core_path)) {
         require_once "$core_path";
     } elseif (file_exists($controllers_path)) {

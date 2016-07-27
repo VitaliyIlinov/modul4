@@ -11,7 +11,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a class="active" href="/news/">Категория новостей</a></li>
+                <li><a class="active" href="/news">Категория новостей</a></li>
                 <li><a href="/news/">Список новостей</a></li>
                 <li><a href="/contact/">Contact US</a></li>
             </ul>
@@ -22,10 +22,10 @@
 <div class="container">
 
     <div class="starter-template">
-        <?=$data['content']; ?>
-    </div>
-    <div class="ate">
-        <p>fgdfgdfgdfg</p>
+        <?php
+        echo "<pre>";
+        print_r($data);
+        ?>
     </div>
 
 </div><!-- /.container -->

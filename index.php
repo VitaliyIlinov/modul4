@@ -5,8 +5,10 @@ define('DS',DIRECTORY_SEPARATOR);
 define('VIEW_PATH',ROOT.DS.'views');
 include ROOT.DS.'core'.DS.'load.class.php';
 
+$a='news/list';
+App::run($a);
+//App::run($_SERVER['REQUEST_URI']);
 
-App::run($_SERVER['REQUEST_URI']);
 
 /**
  * создаю статик конфиг для хранение настроек и возврат их core/config.class.php
@@ -61,4 +63,15 @@ App::run($_SERVER['REQUEST_URI']);
  * резутатом конца буфера будет строка
  *
  * задача контроллера сформировать данные которые будут ппереданы представлению
+ *
+ * DATABASE
+ * Создать класс DB- который будет отвечать за соеденение с базой данных
+ *  protected $connection;
+ * будет принипмать хост ,логи,пароль,имя базы данных
+ *
+ * метод query -строка запроса
+ * метод escape- для невозможности иньекций
+ * 
+ * Подключение к бд будет в классе App
+ *
  */

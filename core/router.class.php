@@ -37,7 +37,9 @@ class Router
                 array_shift($uri_array);
             }
             //get params
-            $this->params=$uri_array;
+            if(!empty($uri_array) && $uri_array[0]!==''){
+                $this->params=$uri_array;
+            }
         }
 //        var_dump($this->method_prefix);
 //        echo "method_prefix :  $this->method_prefix"."<br>";
