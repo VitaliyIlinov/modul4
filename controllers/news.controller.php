@@ -17,7 +17,17 @@ class NewsController extends Controller
             $this->data = $this->model->getNewsListById($id);
         } else {
             $this->data = $this->model->getList(15);
+            return VIEW_PATH . DS . App::getRoutes()->getController() . DS . 'pages.php';
         }
     }
 
+    public function tag()
+    {
+        $params = App::getRoutes()->getParams();
+        if (isset($params)) {
+            $id = $params[0];
+            $this->data = $this->model->getNewsListByTagId($id);
+            return VIEW_PATH . DS . App::getRoutes()->getController() . DS . 'pages.php';
+        }
+    }
 }

@@ -12,6 +12,7 @@ class Newss extends Model
         $sql .= " order by id_category,$order ";
         return $this->db->query($sql);
     }
+
     public function getListIndex($limit = 5, $order = 'date_news')
     {
         $sql = "SELECT a.*,cc.category_name FROM news AS a ";
@@ -23,10 +24,31 @@ class Newss extends Model
 
     }
 
-    public function getNewsListById($id,$order = 'date_news')
+    public function getNewsListById($id)
     {
-        $sql = "SELECT * FROM news  where id_news={$id} ";
-        $sql .= " order by {$order} ";
+        $sql = "select n.*,t1.id_tag,t1.tag_name from news n
+                left join tag_news t on t.id_news=n.id_news
+                left join tags t1 on t1.id_tag=t.id_tag 
+                where n.id_news={$id}";
+        $content = $this->db->query($sql);
+        $tag=null;
+        for ($i = 0; $i < count($content); $i++) {
+            if ($content[$i]['id_tag'] != null) {
+                $tag['tags'][$content[$i]['tag_name']] = $content[$i]['id_tag'];
+            }
+        }
+        if($tag==null){
+            return $content;
+        }
+        return array($content[0],$tag);
+    }
+    
+    public function getNewsListByTagId($id)
+    {
+        $sql = "select n.*,t1.id_tag,t1.tag_name from news n
+                left join tag_news t on t.id_news=n.id_news
+                left join tags t1 on t1.id_tag=t.id_tag 
+                where t1.id_tag={$id}";
         return $this->db->query($sql);
     }
 
@@ -39,18 +61,17 @@ class Newss extends Model
         $sql .= " order by id_category,$order ";
 
 
-
         return $this->db->query($sql);
     }
 
     public function getCategoryById($id)
     {
-        $id =(int)$id;
+        $id = (int)$id;
         $sql = "select * from news n
                 left join category c on c.id_category=n.id_category 
                 where c.id_category={$id}";
         return $this->db->query($sql);
-       // return isset($result[0]) ? ($result[0]) : null;
+        // return isset($result[0]) ? ($result[0]) : null;
     }
 
     public function getById($id)
