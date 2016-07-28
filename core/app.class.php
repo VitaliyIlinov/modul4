@@ -21,6 +21,14 @@ class App
         $method_name = strtolower(self::$routes->getMethodPrefix() . self::$routes->getAction());
 //        echo $class_name."<br>";
 //        echo $method_name;
+        $layout= self::$routes->getMethodPrefix();
+        if($layout =='admin_' && Session::get('role') !='admin'){
+            if ($method_name!=='admin_login'){
+                echo $method_name;
+                Router::redirect('/admin/users/login');
+            }
+        }
+
         $controller_object = new $class_name();
         
 

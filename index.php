@@ -5,10 +5,8 @@ define('DS',DIRECTORY_SEPARATOR);
 define('VIEW_PATH',ROOT.DS.'views');
 include ROOT.DS.'core'.DS.'load.class.php';
 
-//$a='news/list';
-//App::run($a);
+session_start();
 App::run($_SERVER['REQUEST_URI']);
-
 
 /**
  * создаю статик конфиг для хранение настроек и возврат их core/config.class.php

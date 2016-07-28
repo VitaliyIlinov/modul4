@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Modul4</title>
     <link rel="stylesheet" href="/webroot/css/style.css">
-<!--    <link rel="stylesheet" href="/webroot/js/main.js">-->
+    <script>src = "/webroot/js/main.js" ></script>
+    <!--    <link rel="stylesheet" href="/webroot/js/main.js">-->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -25,11 +26,17 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a class="active" href="/category">Категория новостей</a></li>
-                <li><a href="/news/">Список новостей</a></li>
+                <li><a class="active" href="/category/list">Категории новостей</a></li>
+                <li><a href="/news/list/">Список новостей</a></li>
                 <li><a href="/contact/">Contact US</a></li>
             </ul>
         </div><!--/.nav-collapse -->
-    </div>
-</nav>
 
+</nav>
+<?php if (Session::hasFlash()) { ?>
+<div class="starter-template">
+        <div class="alert alert-info" role="alert">
+            <?php Session::flash(); ?>
+        </div>
+</div>
+<?php } ?>

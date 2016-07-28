@@ -16,13 +16,8 @@ class NewsController extends Controller
             $id = $params[0];
             $this->data = $this->model->getNewsListById($id);
         } else {
-            $this->data = $this->model->getList();
+            $this->data = $this->model->getList(15);
         }
-    }
-
-    public function admin_list()
-    {
-        $this->data['test_content'] = 'Тут будет список страниц Админа NewsController method admin_list';
     }
 
 }

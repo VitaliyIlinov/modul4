@@ -16,7 +16,7 @@ class Router
     {
         $this->uri = urldecode(trim($uri, '/'));//delete "/"
         $route=Config::get('routes');
-        $this->controller = 'news';
+        $this->controller = 'index';
         $this->action = 'list';
         $this->method_prefix='';
         $uri_array = explode('/', $this->uri);
@@ -46,6 +46,10 @@ class Router
 //        echo "controller :  $this->controller"."<br>";
 //        echo "action :  $this->action"."<br>";
 //        echo"<pre>";print_r($this->params);
+    }
+
+    public static function redirect($location){
+        header("Location: $location");
     }
 
     public function getUri()
