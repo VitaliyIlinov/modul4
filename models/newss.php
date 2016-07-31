@@ -42,6 +42,19 @@ class Newss extends Model
         }
         return array($content[0],$tag);
     }
+
+    public function getCountPages($limit=5){
+        $sql="select count(id_news) as COUNT from news";
+        $count_news=$this->db->query($sql);
+        $total_rows=($count_news[0]['COUNT']);
+        $num_pages=ceil($total_rows/$limit);
+        return $num_pages;
+    }
+    public function getNewsListByPage($page=0,$limit=5){
+        $start=$page*$limit;
+        $sql="select * from news limit {$start},{$limit}";
+        return $this->db->query($sql);
+    }
     
     public function getNewsListByTagId($id)
     {
@@ -54,12 +67,7 @@ class Newss extends Model
 
     public function getCategoryList($limit = 15, $order = 'date_news')
     {
-        $sql = "SELECT a.*,cc.category_name FROM news AS a ";
-        $sql .= " left join category cc on cc.id_category=a.id_category ";
-        $sql .= " WHERE a.id_news IN (SELECT id_news FROM news AS b ";
-        $sql .= " WHERE b.id_category = a.id_category AND (SELECT COUNT(*) FROM news AS c WHERE c.id_news >= b.id_news AND c.id_category = b.id_category) <=$limit) ";
-        $sql .= " order by id_category,$order ";
-
+        $sql = "SELECT * FROM category ";
 
         return $this->db->query($sql);
     }

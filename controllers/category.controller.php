@@ -11,7 +11,7 @@ class CategoryController extends Controller{
             $id=$params[0];
             $this->data=$this->model->getCategoryById($id);
         }else {
-            $this->data = $this->model->getCategoryList();
+            $this->data['category_list'] = $this->model->getCategoryList();
         }
     }
     public function admin_list(){

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июл 28 2016 г., 01:46
+-- Время создания: Июл 29 2016 г., 00:04
 -- Версия сервера: 10.1.10-MariaDB
 -- Версия PHP: 7.0.4
 
@@ -86,6 +86,48 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `tags`
+--
+
+CREATE TABLE `tags` (
+  `id_tag` int(11) UNSIGNED NOT NULL,
+  `tag_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `tags`
+--
+
+INSERT INTO `tags` (`id_tag`, `tag_name`) VALUES
+(1, 'економика'),
+(2, 'наука'),
+(3, 'Бизнес');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `tag_news`
+--
+
+CREATE TABLE `tag_news` (
+  `id_tag_news` int(11) UNSIGNED NOT NULL,
+  `id_news` int(11) UNSIGNED NOT NULL,
+  `id_tag` int(11) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `tag_news`
+--
+
+INSERT INTO `tag_news` (`id_tag_news`, `id_news`, `id_tag`) VALUES
+(1, 12, 1),
+(2, 12, 2),
+(3, 25, 1),
+(4, 12, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -123,6 +165,20 @@ ALTER TABLE `news`
   ADD KEY `FK_news_category` (`id_category`);
 
 --
+-- Индексы таблицы `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id_tag`);
+
+--
+-- Индексы таблицы `tag_news`
+--
+ALTER TABLE `tag_news`
+  ADD PRIMARY KEY (`id_tag_news`),
+  ADD KEY `FK_tag_news_tags` (`id_tag`),
+  ADD KEY `FK_tag_news_news` (`id_news`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -143,6 +199,16 @@ ALTER TABLE `category`
 ALTER TABLE `news`
   MODIFY `id_news` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
+-- AUTO_INCREMENT для таблицы `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id_tag` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT для таблицы `tag_news`
+--
+ALTER TABLE `tag_news`
+  MODIFY `id_tag_news` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
@@ -156,6 +222,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `news`
   ADD CONSTRAINT `FK_news_category` FOREIGN KEY (`id_category`) REFERENCES `category` (`id_category`);
+
+--
+-- Ограничения внешнего ключа таблицы `tag_news`
+--
+ALTER TABLE `tag_news`
+  ADD CONSTRAINT `FK_tag_news_news` FOREIGN KEY (`id_news`) REFERENCES `news` (`id_news`),
+  ADD CONSTRAINT `FK_tag_news_tags` FOREIGN KEY (`id_tag`) REFERENCES `tags` (`id_tag`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
