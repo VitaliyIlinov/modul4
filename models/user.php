@@ -1,14 +1,27 @@
 <?php
 
-class User extends Model{
+class User extends Model
+{
 
-    public function getByLogin($login){
-        $login=$this->db->escape($login);
-        $sql="select * from users where login = '{$login}' limit 1";
-        $result=$this->db->query($sql);
-        if (isset($result[0])){
+    public function getByLogin($login)
+    {
+        $login = $this->db->escape($login);
+        $sql = "select * from users where login = '{$login}' limit 1";
+        $result = $this->db->query($sql);
+        if (isset($result[0])) {
             return $result[0];
         }
         return false;
+    }
+    
+    public function addUser($login,$password,$email){
+        $sql="
+            insert into users
+            set login='{$login}',
+                email='{$email}',
+                password='{$password}'
+            ";
+
+        return $this->db->query($sql);
     }
 }

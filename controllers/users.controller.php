@@ -1,12 +1,14 @@
 <?php
 
-class UsersController extends Controller{
+class UsersController extends Controller
+{
 
-    public function __construct($data=array())
+    public function __construct($data = array())
     {
         parent::__construct($data);
-        $this->model= new User();
+        $this->model = new User();
     }
+
     public function admin_login()
     {
         if ($_POST && isset($_POST['login']) && isset($_POST['password'])) {
@@ -20,9 +22,20 @@ class UsersController extends Controller{
         }
     }
 
-    public function admin_logout(){
+    public function admin_logout()
+    {
         Session::destroy();
         Router::redirect('/admin/');
+    }
+
+    public function register(){
+        if ($_POST && isset($_POST['login']) && isset($_POST['password'])&& isset($_POST['email'])) {
+            $login=$_POST['login'];
+            $email=$_POST['email'];
+            $password=$_POST['password'];
+            $user=$this->model->addUser($login,$password,$email);
+            Router::redirect('/');
+        }
     }
 
 }
