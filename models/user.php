@@ -13,15 +13,19 @@ class User extends Model
         }
         return false;
     }
-    
-    public function addUser($login,$password,$email){
+
+    public function addUser($form_fields){
+        $login=$form_fields['login'];
+        $email=$form_fields['email'];
+        $password=$form_fields['password'];
+        $hash = md5(Config::get('salt') . $password);
         $sql="
             insert into users
             set login='{$login}',
                 email='{$email}',
-                password='{$password}'
-            ";
-
-        return $this->db->query($sql);
+                password='{$hash}'";
+        if( $this->db->query($sql)){
+           return $this->getByLogin($login);
+        }return false;
     }
 }

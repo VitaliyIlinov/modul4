@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июл 29 2016 г., 00:04
+-- Время создания: Авг 03 2016 г., 22:59
 -- Версия сервера: 10.1.10-MariaDB
 -- Версия PHP: 7.0.4
 
@@ -71,7 +71,8 @@ INSERT INTO `news` (`id_news`, `title_news`, `content_news`, `image_news`, `date
 (17, 'тест', 'тест', '3.jpg', '2016-07-27 01:34:59', 0, 1, 0),
 (18, 'дореми', 'доремий', '3.jpg', '2016-07-27 01:39:32', 0, 1, 0),
 (19, 'економически новости', 'тролололло', '3.jpg', '2016-07-27 12:53:29', 0, 3, 0),
-(25, 'QQwQ', '222', '', '2016-07-28 01:14:47', 0, 2, 1);
+(25, 'QQwQ', '222', '', '2016-07-28 01:14:47', 0, 2, 1),
+(26, '11', '11', '', '2016-07-31 20:03:39', 0, 1, 0);
 
 --
 -- Триггеры `news`
@@ -135,7 +136,7 @@ CREATE TABLE `users` (
   `id` smallint(5) NOT NULL,
   `login` varchar(45) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `role` varchar(45) NOT NULL DEFAULT 'admin',
+  `role` varchar(45) NOT NULL,
   `password` char(32) NOT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -145,7 +146,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `email`, `role`, `password`, `is_active`) VALUES
-(6, 'admi', 'ilinov123#ukr.net', 'admin', 'admin', 1);
+(34, 'vetal', 'vetal@ukr.net', '', 'ee72131cf82e024e5e20854fc3702f94', 1),
+(35, '111', '1111211@ww', '', '1c6be783cdddbc8f3323abd5749599e0', 1),
+(36, 'test', 'test@test.ru', '', 'd3636e2ae38913e9d678a8b9b0200871', 1),
+(37, 'jjjjjjj', 'jjj@fdd.t', '', '01f5734d1547cdf29a5ff160995c10bb', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -182,7 +186,9 @@ ALTER TABLE `tag_news`
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `login` (`login`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -197,7 +203,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
-  MODIFY `id_news` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_news` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT для таблицы `tags`
 --
@@ -212,7 +218,7 @@ ALTER TABLE `tag_news`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --

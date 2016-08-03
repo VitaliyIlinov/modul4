@@ -47,8 +47,14 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+            <?php if(Session::get('login')):?>
+                <li><a href="/">Hello <?=Session::get('login') ;?></a></li>
+                <li><a href="/users/logout/">Logout</a></li>
+                <?php else :?>
                 <li><a href="/users/register/">Register</a></li>
-                <li><a href="#">logout</a></li>
+                <li><a href="/users/login/">login</a></li>
+                <?php endif; ?>
+
             </ul>
             <form class="navbar-form navbar-right">
                 <div class="form-group">

@@ -1,17 +1,11 @@
 
 <br/>
-<h1>Registration</h1>
+<h1>Login</h1>
 <form class="form-horizontal" method="post" action="">
     <div class="form-group">
         <label for="login" class="col-sm-2 control-label">Login:</label>
         <div class="col-sm-10">
             <input type="text" name="login" class="form-control" id="login" placeholder="Login">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="email" class="col-sm-2 control-label">Email:</label>
-        <div class="col-sm-10">
-            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
         </div>
     </div>
     <div class="form-group">
@@ -26,3 +20,4 @@
         </div>
     </div>
 </form>
+

@@ -28,14 +28,35 @@ class UsersController extends Controller
         Router::redirect('/admin/');
     }
 
+    public function login()
+    {
+        if ($_POST && isset($_POST['login']) && isset($_POST['password'])) {
+            $user = $this->model->getByLogin($_POST['login']);
+            $hash = md5(Config::get('salt') . $_POST['password']);
+            if ($user && $user['is_active'] && $hash == $user['password']) {
+                Session::set('login', $user['login']);
+                Router::redirect('/');
+            }else{
+                Session::setFlash('Try again');
+            }
+        }
+    }
+    
+
     public function register(){
         if ($_POST && isset($_POST['login']) && isset($_POST['password'])&& isset($_POST['email'])) {
-            $login=$_POST['login'];
-            $email=$_POST['email'];
-            $password=$_POST['password'];
-            $user=$this->model->addUser($login,$password,$email);
-            Router::redirect('/');
+            $new_user=$this->model->addUser($_POST);
+            if($new_user){
+                Session::set('login', $new_user['login']);
+                Session::setFlash('Congratulation');
+            }
+            //Router::redirect('/');
         }
     }
 
+    public function logout()
+    {
+        Session::destroy();
+        Router::redirect('/');
+    }
 }
