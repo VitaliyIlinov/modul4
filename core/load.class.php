@@ -5,8 +5,7 @@ require_once (ROOT.DS.'config'.DS.'config.php');
 function __autoload($class_name)
 {
     $core_path = ROOT . DS . 'core' . DS . strtolower($class_name) . '.class.php';
-    //$controllers_path = ROOT . DS . 'controllers' . DS . '.controller.php';
-    $controllers_path = ROOT . DS . 'controllers' . DS . str_replace('controller', '', strtolower($class_name)) . '.controller.php';
+     $controllers_path = ROOT . DS . 'controllers' . DS . str_replace('controller', '', strtolower($class_name)) . '.controller.php';
     $model_path = ROOT . DS . 'models' . DS . strtolower($class_name) . '.php';
 
     if (file_exists($core_path)) {

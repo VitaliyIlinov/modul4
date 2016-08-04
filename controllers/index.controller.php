@@ -11,17 +11,7 @@ class IndexController extends Controller{
     {
             $this->data = $this->model->getListIndex();
     }
-
-    public function view()
-    {
-        $params = App::getRouter()->getParams();
-
-        if (isset($params[0])) {//задан ли первый параметр
-            $alias = strtolower($params[0]);
-            $this->data = $this->model->getByAlias($alias);
-        }
-    }
-
+    
     public function admin_list()
     {
         $this->data = $this->model->getList();

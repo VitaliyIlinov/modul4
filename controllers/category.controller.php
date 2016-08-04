@@ -14,7 +14,4 @@ class CategoryController extends Controller{
             $this->data['category_list'] = $this->model->getCategoryList();
         }
     }
-    public function admin_list(){
-        $this->data['test_content']='Тут будет список страниц Админа NewsController method admin_list';
-    }
 }
