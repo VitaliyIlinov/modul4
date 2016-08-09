@@ -5,7 +5,9 @@ function confirmDelete() {
         return false;
     }
 }
-
+function al() {
+    alert('1');
+}
 // $(document).ready(function () {
 //     $(window).on('beforeunload', function () {
 //         // document.write('<div>.....................</div>');  // HTML код в одну строчку!!!

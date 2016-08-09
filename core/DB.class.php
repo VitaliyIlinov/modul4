@@ -34,6 +34,9 @@ class DB
         return $data;
     }
 
+    public function last_id(){
+        return $this->connection->insert_id;
+    }
     public function escape($str)
     {
         return mysqli_escape_string($this->connection, $str);

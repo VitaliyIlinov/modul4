@@ -14,14 +14,26 @@ class IndexController extends Controller{
     
     public function admin_list()
     {
-        $this->data = $this->model->getList();
+        if(isset($_GET['pages'])) {
+            $page = $_GET['pages'] - 1;
+        }
+        $page=!isset($page)? 0 : $page;
+        $this->data = $this->model->getNewsListByPage($page,10);
     }
 
     public function admin_add()
     {
 
+        $this->data['tags']=$this->model->getTagsList();
+        $this->data['category']=$this->model->getCategoryList();
         if ($_POST) {
-            $_result = $this->model->save($_POST);
+            if(!empty($_FILES['photo']['name'])){
+                $img=$this->model->move_uploaded_file($_FILES);
+                echo $img;
+            }
+            //echo "<pre>";print_r($_FILES);print_r($_POST);exit;
+            $img = isset($img) ? $img : null;
+            $_result = $this->model->save($_POST,$img);
             if ($_result) {
                 Session::setFlash('Page was saved.');
             } else {
@@ -35,28 +47,27 @@ class IndexController extends Controller{
     {
         if ($_POST) {
             $id = isset($_POST['id_news']) ? $_POST['id_news'] : null;
-            $result = $this->model->save($_POST, $id);
-//            if(isset($_POST['tags'])){
-//                
-//            }
+            if(!empty($_FILES['photo']['name'])){
+                $img=$this->model->move_uploaded_file($_FILES);
+               // echo "<pre>";print_r($_FILES);print_r($_POST);exit;
+            }
+            $img = isset($img) ? $img : null;
+
+            $result = $this->model->save($_POST, $img,$id);
+
             if ($result) {
                 Session::setFlash('Page was saved.');
             } else {
                 Session::setFlash('Error.');
             }
-            Router::redirect('/admin/index');
+            Router::redirect('/admin/index/list');
         }
 
         if (isset($this->params[0])) {
-            $this->data= $this->model->getById($this->params[0]);
-            $this->data['tags']=$this->model->getTagsList();
+            $this->data= $this->model->getNewsListById($this->params[0]);
             $this->data['category']=$this->model->getCategoryList();
-            $this->data['is_tags']=$this->model->is_tags($this->params[0]);
-
-            //$this->data['il2_tags'][$this->data['is_tags'][0]['id_tag']]='';
-            //$this->data['il2_tags'][$this->data['is_tags'][1]['id_tag']]='';
-
-
+            $this->data['tags_list']=$this->model->getTagsList();
+            
         } else {
             Session::setFlash('Wrong page id.');
             Router::redirect('/admin/index/');
@@ -73,6 +84,6 @@ class IndexController extends Controller{
                 Session::setFlash('Error.');
             }
         }
-        Router::redirect('/admin/index/');
+        Router::redirect('/admin/index/list');
     }
 }

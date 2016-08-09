@@ -19,12 +19,10 @@ class App
         self::$routes = new Router($uri);
         $class_name = ucfirst(self::$routes->getController()) . 'Controller';
         $method_name = strtolower(self::$routes->getMethodPrefix() . self::$routes->getAction());
-        //echo "<br>";
-        //echo 'Controller: ' . $class_name . "<br>";//indexController
-        //echo 'Action: ' . $method_name;//admin_list
+//        echo "<br>";
+//        echo 'Controller: ' . $class_name . "<br>";//indexController
+//        echo 'Action: ' . $method_name;//admin_list
         $layout = self::$routes->getMethodPrefix();
-        //echo $layout;
-        //var_dump( Session::get('role'));
         if ($layout == 'admin_' && Session::get('role') != 'admin') {
             if ($method_name !== 'admin_login') {
                 Router::redirect('/admin/users/login');//чтоб не безконечный редирект

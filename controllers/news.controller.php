@@ -12,21 +12,14 @@ class NewsController extends Controller
     public function list()
     {
         $params = App::getRoutes()->getParams();
-//        print_r($params);
         if (isset($_GET['pages'])) {
-           // echo 'enter in get method';
-            $page = $_GET['pages']-1;
-            $this->data = $this->model->getNewsListByPage($page);
-            $this->data[]['count'] = $this->model->getCountPages();
-            return VIEW_PATH . DS . App::getRoutes()->getController() . DS . 'pages.php';
-        }elseif (isset($params)) {
+            $page = $_GET['pages'] - 1;
+        }
+        $page = !isset($page) ? 0 : $page;
+        $this->data = $this->model->getNewsListByPage($page, 10);
+        if (isset($params)&& !isset($_GET['pages'])) {
             $id = $params[0];
             $this->data = $this->model->getNewsListById($id);
-            
-        } else {
-            $this->data = $this->model->getNewsListByPage();
-            $this->data[]['count'] = $this->model->getCountPages();
-            return VIEW_PATH . DS . App::getRoutes()->getController() . DS . 'pages.php';
         }
     }
 

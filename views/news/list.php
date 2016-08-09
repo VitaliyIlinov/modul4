@@ -1,15 +1,34 @@
 <div class="starter-template">
-    <h2><?= $data[0]['title_news']; ?></h2>
-    <div><?= $data[0]['content_news']; ?></div>
-    <?php if ($data[0]['image_news']): ?>
-        <div><img src="/webroot/image/<?= $data[0]['image_news']; ?>"></div>
+    <?php if(!isset($data['count'])): ?>
+
+    <h2><?= $data['title_news']; ?></h2>
+    <div><?= $data['content_news']; ?></div>
+    <?php if ($data['image_news']): ?>
+        <div><img src="/webroot/image/<?= $data['image_news']; ?>"></div>
     <?php endif; ?>
-    <?php if (count($data) > 1): ?>
-        <?php foreach ($data[1]['tags'] as $key => $value): ?>
-            <a href="/news/tag/<?= $value; ?>"> <input type="button" class="btn btn-primary" value="<?= $key; ?>"></a>
+    <br/>
+    <?php if (isset($data['tags'])): ?>
+        <?php foreach ($data['tags'] as $key => $value): ?>
+            <a href="/news/tag/<?= $key; ?>"> <input type="button" class="btn btn-primary" value="<?= $value; ?>"></a>
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
+<?php else: ?>
+    <div class="container">
+        <ul class="list-unstyled">
+            <?php foreach ($data as $key => $value): ?>
 
+            <li> <a href="/news/list/<?= $value['id_news']; ?>" onclick="al();"><?= $value['title_news']; ?> </a></li>
+            <?php endforeach; ?>
+        </ul>
+
+        <?php if (!isset($_GET['pages'])) $_GET['pages'] = 1; ?>
+        <ul class="pagination">
+            <?php for ($j = 1; $j <= ($data['count']); $j++) : ?>
+                <li <?= ($j==$_GET['pages'])? 'class=active': '' ;?>><a href="/news/list/?pages=<?=$j;?>"  ><?=$j;?></a></li>
+            <?php endfor; ?>
+        </ul>
+    </div>
+<?php endif;?>
 
 
