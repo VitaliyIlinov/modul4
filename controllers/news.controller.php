@@ -11,7 +11,6 @@ class NewsController extends Controller
 
     public function list()
     {
-
         $params = App::getRoutes()->getParams();
 //        print_r($params);
         if (isset($_GET['pages'])) {
@@ -19,8 +18,6 @@ class NewsController extends Controller
             $page = $_GET['pages']-1;
             $this->data = $this->model->getNewsListByPage($page);
             $this->data[]['count'] = $this->model->getCountPages();
-//            echo "<pre>";
-//            print_r($this->data);
             return VIEW_PATH . DS . App::getRoutes()->getController() . DS . 'pages.php';
         }elseif (isset($params)) {
             $id = $params[0];

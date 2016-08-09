@@ -31,7 +31,17 @@ class Newss extends Model
                 left join tags t1 on t1.id_tag=t.id_tag 
                 where n.id_news={$id}";
         $content = $this->db->query($sql);
+
+        if (!Session::get('login') && $content[0]['is_analitic'] == 1) {
+            $sentences = explode('.', $content[0]['content_news']);
+            $content[0]['content_news']='';
+            for ($i = 0; $i < 3; $i++) {
+                $content[0]['content_news'] .= $sentences[$i].'.';
+            }
+            $content[0]['content_news'] .=' <a href="/users/login/">Зарегистрироваться...</a>';
+        }
         $tag = null;
+        //echo "<pre>";print_r($content);exit;
         for ($i = 0; $i < count($content); $i++) {
             if ($content[$i]['id_tag'] != null) {
                 $tag['tags'][$content[$i]['tag_name']] = $content[$i]['id_tag'];
@@ -40,6 +50,7 @@ class Newss extends Model
         if ($tag == null) {
             return $content;
         }
+
         return array($content[0], $tag);
     }
 
@@ -63,7 +74,7 @@ class Newss extends Model
     {
         $sql = "select * from tags ";
 
-        $result= $this->db->query($sql);
+        $result = $this->db->query($sql);
 
         for ($i = 0; $i < count($result); $i++) {
             $results[$result[$i]['id_tag']] = $result[$i]['tag_name'];
@@ -84,7 +95,7 @@ class Newss extends Model
     public function getCategoryList($limit = 15, $order = 'date_news')
     {
         $sql = "SELECT * FROM category ";
-        $result= $this->db->query($sql);
+        $result = $this->db->query($sql);
         for ($i = 0; $i < count($result); $i++) {
             $results[$result[$i]['id_category']] = $result[$i]['category_name'];
         }
@@ -98,7 +109,7 @@ class Newss extends Model
         $sql = "select * from news n
                 left join category c on c.id_category=n.id_category 
                 where c.id_category={$id}";
-        $result=$this->db->query($sql);
+        $result = $this->db->query($sql);
         //echo "<pre>";print_r($result);exit;
 
         return $result;

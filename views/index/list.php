@@ -7,7 +7,7 @@
         <h2><a href="/category/list/<?= $item ?>"><?= $key ?></a></h2>
         <?php foreach ($data as $category): ?>
             <?php if ($category['id_category'] == $item): ?>
-                <ul>
+                <ul class="list-unstyled">
                     <li><a href="/news/list/<?= $category['id_news'] ?>"><?= $category['title_news']; ?></a></li>
                 </ul>
             <?php endif; ?>
