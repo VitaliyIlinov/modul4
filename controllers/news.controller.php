@@ -24,8 +24,8 @@ class NewsController extends Controller
             return VIEW_PATH . DS . App::getRoutes()->getController() . DS . 'pages.php';
         }elseif (isset($params)) {
             $id = $params[0];
-           // echo $id ;
             $this->data = $this->model->getNewsListById($id);
+            
         } else {
             $this->data = $this->model->getNewsListByPage();
             $this->data[]['count'] = $this->model->getCountPages();

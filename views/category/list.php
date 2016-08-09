@@ -1,9 +1,10 @@
 <div class="starter-template">
 <?php if (isset($data['category_list']))  : ?>
+    <h2>Категории новостей</h2>
     <ul>
-        <?php for ($i = 0; $i < count($data['category_list']); $i++) : ?>
-            <li><a href="/category/list/<?= $data['category_list'][$i]['id_category']; ?>"><?= $data['category_list'][$i]['category_name']; ?></a></li>
-        <?php endfor; ?>
+        <?php foreach ($data['category_list'] as $key=>$value): ?>
+            <li><a href="/category/list/<?= $key; ?>"><?= $value; ?></a></li>
+        <?php endforeach; ?>
     </ul>
 
 <?php else : ?>

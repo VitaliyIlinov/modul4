@@ -34,8 +34,11 @@ class IndexController extends Controller{
     public function admin_edit()
     {
         if ($_POST) {
-            $id = isset($_POST['id']) ? $_POST['id'] : null;
+            $id = isset($_POST['id_news']) ? $_POST['id_news'] : null;
             $result = $this->model->save($_POST, $id);
+//            if(isset($_POST['tags'])){
+//                
+//            }
             if ($result) {
                 Session::setFlash('Page was saved.');
             } else {
@@ -46,6 +49,14 @@ class IndexController extends Controller{
 
         if (isset($this->params[0])) {
             $this->data= $this->model->getById($this->params[0]);
+            $this->data['tags']=$this->model->getTagsList();
+            $this->data['category']=$this->model->getCategoryList();
+            $this->data['is_tags']=$this->model->is_tags($this->params[0]);
+
+            //$this->data['il2_tags'][$this->data['is_tags'][0]['id_tag']]='';
+            //$this->data['il2_tags'][$this->data['is_tags'][1]['id_tag']]='';
+
+
         } else {
             Session::setFlash('Wrong page id.');
             Router::redirect('/admin/index/');
