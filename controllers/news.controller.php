@@ -29,7 +29,8 @@ class NewsController extends Controller
         if (isset($params)) {
             $id = $params[0];
             $this->data = $this->model->getNewsListByTagId($id);
-            return VIEW_PATH . DS . App::getRoutes()->getController() . DS . 'pages.php';
+        }else{
+            $this->data=$this->model->getTagsList();
         }
     }
 }

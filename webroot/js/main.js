@@ -5,6 +5,25 @@ function confirmDelete() {
         return false;
     }
 }
+$(function() {
+    $("#search").keyup(function(){
+        var search = $("#search").val();
+        $.ajax({
+            type: "POST",
+            url: "/index/search",
+            //url: "/search.php",
+            data: {"search": search},
+            //dataType : "json",
+            cache: false,
+            success: function(response){
+                $("#resSearch").html(response);
+            }
+        });
+        return false;
+
+    });
+});
+
 function al() {
     alert('1');
 }

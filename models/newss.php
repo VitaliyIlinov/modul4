@@ -11,9 +11,9 @@ class Newss extends Model
         $sql .= " order by a.id_category, {$order} desc";
         return $this->db->query($sql);
     }
-    public function getCountPages($limit = 5)
+    public function getCountPages($limit = 5,$from='news')
     {
-        $sql = "select count(id_news) as COUNT from news";
+        $sql = "select count(*) as COUNT from {$from}";
         $count_news = $this->db->query($sql);
         $total_rows = ($count_news[0]['COUNT']);
         $num_pages = ceil($total_rows / $limit);
@@ -21,13 +21,18 @@ class Newss extends Model
     }
 
 
+    public function ajax($search){
+        $sql="SELECT * FROM tags WHERE tag_name LIKE '%{$search}%'";
+        return $this->db->query($sql);
+    }
     public function getTagsList()
     {
-        $sql = "select * from tags ";
+        $sql = "select *,(select count(*) from tags)as count from tags ";
         $result = $this->db->query($sql);
         for ($i = 0; $i < count($result); $i++) {
             $results[$result[$i]['id_tag']] = $result[$i]['tag_name'];
         }
+        //$results['count']= $result[$i-1]['count'];
         return $results;
     }
     
@@ -80,13 +85,16 @@ class Newss extends Model
         return $content .= ' <a href="/users/login/">Зарегистрироваться...</a>';
     }
 
-    public function getNewsListByTagId($id)
+    public function getNewsListByTagId($id,$page = 0, $limit = 10)
     {
+        $start = $page * $limit;
         $sql = "select n.*,t1.id_tag,t1.tag_name from news n
                 left join tag_news t on t.id_news=n.id_news
                 left join tags t1 on t1.id_tag=t.id_tag 
-                where t1.id_tag={$id}";
-        return $this->db->query($sql);
+                where t1.id_tag={$id} order by date_news desc limit {$start},{$limit}";
+        $result = $this->db->query($sql);
+        //$result['count'] = $this->getCountPages($limit,'tags');
+        return ($result);
     }
 
 
