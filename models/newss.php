@@ -20,6 +20,53 @@ class Newss extends Model
         return $num_pages;
     }
 
+    public function count_visit($id_news){
+        /**
+         * 1.узнаем айпи кто зашел
+         * 2.выбираем все записи  с лога по айди_новости где айпи = айпи и время 24 часа
+         * 3.если нету
+         * 4.делаем апдейт в news
+         * 5.вставляем в лог запись
+         */
+        $visitor_ip = $_SERVER['REMOTE_ADDR'];
+//        $date = date("Y-m-d H:i:s");
+        /**
+         * проверяет в таблице log, были ли посещения данной странички с данного IP адреса за последние 24 часа
+         */
+        $sql=("SELECT count(id_news)as count FROM log WHERE id_news='{$id_news}' and 
+              ip_visit=INET_ATON('{$visitor_ip}') and  date_visit > DATE_SUB(NOW(), INTERVAL 24 HOUR) LIMIT 1");
+
+        $count_id=$this->db->query($sql);
+        if ($count_id[0]['count']==0) {
+            $sql=("UPDATE news SET cnt_visit=(cnt_visit+1) WHERE id_news='{$id_news}'");
+            $this->db->query($sql);
+        }
+        /**
+         * добавляет в таблицу log новую запись с id посещенной страницы, IP адресом посетителя и временем посещения.
+         */
+        $sql=("INSERT INTO log (id_news,ip_visit)
+             VALUES ('{$id_news}',INET_ATON('{$visitor_ip}'))");
+        $this->db->query($sql);
+    }
+
+    public function getNewsListById($id)
+    {
+        $this->count_visit($id);
+        $sql = "select n.*,t1.id_tag,t1.tag_name from news n
+                left join tag_news t on t.id_news=n.id_news
+                left join tags t1 on t1.id_tag=t.id_tag 
+                where n.id_news={$id}";
+        $content = $this->db->query($sql);
+        $content = array_pop($content);
+
+        if (!Session::get('login') && $content['is_analitic'] == 1) {
+            $content['content_news'] = $this->is_analitic($content['content_news'],5);
+        }
+        if ($tags = $this->is_tags($id)) {
+            $content['tags'] = $tags;
+        }
+        return $content;
+    }
 
     public function ajax($search){
         $sql="SELECT * FROM tags WHERE tag_name LIKE '%{$search}%'";
@@ -54,23 +101,6 @@ class Newss extends Model
         return false;
     }
 
-    public function getNewsListById($id)
-    {
-        $sql = "select n.*,t1.id_tag,t1.tag_name from news n
-                left join tag_news t on t.id_news=n.id_news
-                left join tags t1 on t1.id_tag=t.id_tag 
-                where n.id_news={$id}";
-        $content = $this->db->query($sql);
-        $content = array_pop($content);
-
-        if (!Session::get('login') && $content['is_analitic'] == 1) {
-            $content['content_news'] = $this->is_analitic($content['content_news'],5);
-        }
-        if ($tags = $this->is_tags($id)) {
-            $content['tags'] = $tags;
-        }
-        return $content;
-    }
     
     public function is_analitic($content, $row = 5)
     {

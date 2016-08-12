@@ -16,12 +16,18 @@
 </div>
 <div class="slider">
     <ul>
-        <?php for ($i = 0; $i < 4; $i++) { ?>
+        <?=$cnt=0;?>
+        <?php foreach ($data as $key=>$value) : ?>
+            <?php if(($value['image_news'])): ?>
+                <?=$cnt++;?>
+                <?php if($cnt==5)break; ?>
             <li>
-                <a href="/category/list/<?= $data[$i]['id_category']; ?>">
-                    <img src="/webroot/image/<?= $data[$i]['image_news']; ?>"></a>
+                <a href="/news/list/<?= $value['id_news']; ?>">
+                    <img src="/webroot/image/<?= $value['image_news']; ?>"></a>
             </li>
-        <?php } ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
     </ul>
 </div>
 <script type="text/javascript">

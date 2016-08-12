@@ -20,7 +20,7 @@
                                                              value="<?= $value; ?>"></a>
                 <?php endforeach; ?>
             <?php endif; ?>
-
+<div>Количество просмотров: <?=$data['cnt_visit'];?>   Читают:<span id="read"></span></div>
         <?php else: ?>
             <ul class="list-unstyled">
                 <?php foreach ($data as $key => $value): ?>

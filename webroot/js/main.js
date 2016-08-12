@@ -1,12 +1,12 @@
 function confirmDelete() {
-    if(confirm("delete this item?")){
+    if (confirm("delete this item?")) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
-$(function() {
-    $("#search").keyup(function(){
+$(function () {
+    $("#search").keyup(function () {
         var search = $("#search").val();
         $.ajax({
             type: "POST",
@@ -15,7 +15,7 @@ $(function() {
             data: {"search": search},
             //dataType : "json",
             cache: false,
-            success: function(response){
+            success: function (response) {
                 $("#resSearch").html(response);
             }
         });
@@ -23,10 +23,29 @@ $(function() {
 
     });
 });
+// window.onload=function (){
+//     randomInteger(1,5);
+//
+// };
 
-function al() {
-    alert('1');
+// $(document).ready(function(){
+//
+//     $('#read').text(function(){
+//     var rand = min + Math.random() * (max + 1 - min);
+//     rand = Math.floor(rand);
+//     return rand;
+//     });
+// });
+$(document).ready(function () {
+    $('#read').text(randomInteger(1, 5));
+});
+
+function randomInteger(min, max) {
+    var rand = min + Math.random() * (max + 1 - min);
+    rand = Math.floor(rand);
+    return rand;
 }
+
 // $(document).ready(function () {
 //     $(window).on('beforeunload', function () {
 //         // document.write('<div>.....................</div>');  // HTML код в одну строчку!!!
