@@ -50,7 +50,7 @@ class UsersController extends Controller
                 Session::set('login', $new_user['login']);
                 Session::setFlash('Congratulation');
             }
-            //Router::redirect('/');
+            Router::redirect('/');
         }
     }
 

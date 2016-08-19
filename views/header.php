@@ -69,7 +69,7 @@
 <!--                <button type="submit" class="btn btn-default">Поиск</button>-->
             </form>
     </nav>
-</div>
+
 <div class="left"></div>
 <?php if (Session::hasFlash()) { ?>
     <div class="starter-template">

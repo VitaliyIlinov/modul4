@@ -35,7 +35,7 @@
         </div><br/>
         <div class="form-group">
             <label for="photo">File input:</label>
-            <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+<!--            <input type="hidden" name="MAX_FILE_SIZE" value="30000" />-->
             <input type="file" name="photo" id="photo" >
             <p class="help-block">Please download your pictures(jpg, png, gif).Max size 3mb,max picture-1</p>
         </div>

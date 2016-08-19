@@ -8,7 +8,7 @@ class Newss extends Model
         $sql .= " left join category cc on cc.id_category=a.id_category ";
         $sql .= " WHERE a.id_news IN (SELECT id_news FROM news AS b ";
         $sql .= " WHERE b.id_category = a.id_category AND (SELECT COUNT(*) FROM news AS c WHERE c.id_news >= b.id_news AND c.id_category = b.id_category) <=$limit) ";
-        $sql .= " order by a.id_category, {$order} desc";
+        $sql .= " order by  {$order} desc ,a.id_category";
         return $this->db->query($sql);
     }
     public function getCountPages($limit = 5,$from='news')
@@ -25,7 +25,7 @@ class Newss extends Model
          * 1.узнаем айпи кто зашел
          * 2.выбираем все записи  с лога по айди_новости где айпи = айпи и время 24 часа
          * 3.если нету
-         * 4.делаем апдейт в news
+         * 4.делаем апдейт четчика в news
          * 5.вставляем в лог запись
          */
         $visitor_ip = $_SERVER['REMOTE_ADDR'];

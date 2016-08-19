@@ -1,4 +1,9 @@
 <div class="starter-template">
+<!--    --><?php
+//    echo "<pre>";
+//    print_r($data);
+//    echo "</pre>";
+//    ?>
     <?php
     foreach ($data as $category => $item) {
         $b[$item['category_name']] = $item['id_category'];
@@ -23,8 +28,8 @@
                 <?php if($cnt==5)break; ?>
             <li>
                 <a href="/news/list/<?= $value['id_news']; ?>">
-                    <img src="/webroot/image/<?= $value['image_news']; ?>"></a>
-            </li>
+                   <div><h1 style="text-align: center"><?= $value['title_news']; ?></h1><img src="/webroot/image/<?= $value['image_news']; ?>"></a></div>
+</li>
             <?php endif; ?>
         <?php endforeach; ?>
 

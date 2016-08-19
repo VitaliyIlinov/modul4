@@ -43,7 +43,10 @@ class IndexController extends Controller
         if ($_POST) {
             if (!empty($_FILES['photo']['name'])) {
                 $img = $this->model->move_uploaded_file($_FILES);
-                echo $img;
+                //echo $img;
+//                echo "<pre>";
+//                print_r($_FILES);
+//                echo "</pre>";exit;
             }
             //echo "<pre>";print_r($_FILES);print_r($_POST);exit;
             $img = isset($img) ? $img : null;
