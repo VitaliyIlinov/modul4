@@ -85,7 +85,7 @@ $(document).ready(function () {
                 var t = setInterval(function () {
                     $('#change').remove();
                     clearInterval(t);
-                }, 600000);
+                }, 60000);
             }
             , 'json'
         );

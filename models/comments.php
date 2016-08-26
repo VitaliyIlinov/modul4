@@ -27,6 +27,40 @@ class Comments extends Model
         return $results;
     }
 
+    public function top_commentators($limit=5){
+        $sql="select c.*,count(*) as cnt,u.login from comments c
+              left join users u on u.id=c.id_user
+              group by c.id_user
+              limit {$limit}";
+        return $this->db->query($sql);
+    }
+
+    public function getCommentCnt($id_user,$limit){
+        $sql="select count(*) as cnt from comments where id_user={$id_user}";
+        $cnt_pages=$this->db->query($sql);
+        $result= ceil($cnt_pages[0]['cnt']/$limit);
+        return $result;
+    }
+
+    public function getThemes($limit=3){
+        $sql="select c.*,n.title_news from (select max(date_time) datet,id_news from comments 
+group by id_news limit {$limit}) c
+left join news n on n.id_news=c.id_news";
+        return $this->db->query($sql);
+
+    }
+
+    public function getCommentsByUser($id_user,$page=0,$limit=5){
+        $page=$page*$limit;
+        $sql="select c.*,n.title_news,u.login from comments c
+              left join users u on u.id=c.id_user
+              left join news n on n.id_news=c.id_news
+              where c.id_user ={$id_user} order by  c.date_time desc limit {$page},{$limit} ";
+        $result['comment']= $this->db->query($sql);
+        $result['count_page']=$this->getCommentCnt($id_user,$limit);
+        return $result;
+    }
+    
     public function vote($id_comment, $type)
     {
         if(!Session::get('login')){

@@ -24,7 +24,11 @@ class IndexController extends Controller
     public function list()
     {
         $this->data = $this->model->getListIndex();
+        $this->model = new Comments();
+        $this->data['commentator']=$this->model->top_commentators(5);
+        $this->data['themes']=$this->model->getThemes(3);
     }
+   
 
     public function admin_list()
     {

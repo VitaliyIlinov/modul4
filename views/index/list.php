@@ -1,17 +1,19 @@
 <div class="starter-template">
-<!--    --><?php
-//    echo "<pre>";
-//    print_r($data);
-//    echo "</pre>";
-//    ?>
+<!--        --><?php
+//        echo "<pre>";
+//        print_r($data);
+//        echo "</pre>";
+//        ?>
     <?php
     foreach ($data as $category => $item) {
-        $b[$item['category_name']] = $item['id_category'];
+        if (isset($item['id_category'])) {
+            $b[$item['category_name']] = $item['id_category'];
+        }
     } ?>
     <?php foreach ($b as $key => $item): ?>
         <h2><a href="/category/list/<?= $item ?>"><?= $key ?></a></h2>
         <?php foreach ($data as $category): ?>
-            <?php if ($category['id_category'] == $item): ?>
+            <?php if (isset($category['id_category']) && $category['id_category'] == $item): ?>
                 <ul class="list-unstyled">
                     <li><a href="/news/list/<?= $category['id_news'] ?>"><?= $category['title_news']; ?></a></li>
                 </ul>
@@ -21,19 +23,22 @@
 </div>
 <div class="slider">
     <ul>
-        <?=$cnt=0;?>
-        <?php foreach ($data as $key=>$value) : ?>
-            <?php if(($value['image_news'])): ?>
-                <?=$cnt++;?>
-                <?php if($cnt==5)break; ?>
-            <li>
-                <a href="/news/list/<?= $value['id_news']; ?>">
-                   <div><h1 style="text-align: center"><?= $value['title_news']; ?></h1><img src="/webroot/image/<?= $value['image_news']; ?>"></a></div>
+        <?= $cnt = 0; ?>
+        <?php foreach ($data as $key => $value) : ?>
+        <?php if (($value['image_news'])): ?>
+        <?= $cnt++; ?>
+        <?php if ($cnt == 5) break; ?>
+        <li>
+            <a href="/news/list/<?= $value['id_news']; ?>">
+                <div><h1 style="text-align: center"><?= $value['title_news']; ?></h1><img
+                        src="/webroot/image/<?= $value['image_news']; ?>">
+            </a>
+</div>
 </li>
-            <?php endif; ?>
-        <?php endforeach; ?>
+<?php endif; ?>
+<?php endforeach; ?>
 
-    </ul>
+</ul>
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -62,3 +67,41 @@
         return false;
     });
 </script>
+<h2>Top 5 commentators:</h2>
+<table class="table table-striped"  width="400px">
+    <thead>
+    <tr>
+        <th>№</th>
+        <th>Name:</th>
+        <th>Count comments:</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php $i=1;foreach ($data['commentator'] as $commentator): ?>
+        <tr>
+            <td><?=$i++?></td>
+            <td><a href="/commentator/show/<?=$commentator['id_user']?>"><?=$commentator['login']?></a></td>
+            <td><?=$commentator['cnt']?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<h2>Top 3 Themes:</h2>
+<table class="table table-striped"  width="400px">
+    <thead>
+    <tr>
+        <th>№</th>
+        <th>Name:</th>
+        <th>Last date:</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php $i=1;foreach ($data['themes'] as $theme): ?>
+        <tr>
+            <td><?=$i++?></td>
+            <td><a href="/news/list/<?=$theme['id_news']?>"><?=$theme['title_news']?></a></td>
+            <td><?=$theme['datet']?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

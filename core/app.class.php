@@ -28,7 +28,7 @@ class App
                 Router::redirect('/admin/users/login');//чтоб не безконечный редирект
            }
         }
-
+        
         $controller_object = new $class_name();
 
         if (method_exists($controller_object, $method_name)) {
