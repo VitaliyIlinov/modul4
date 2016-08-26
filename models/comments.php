@@ -3,6 +3,13 @@
 class Comments extends Model
 {
 
+    public function getCommentById($id_comment){
+        $sql = "SELECT u.login, c.* FROM comments c
+        left join users u on u.id=c.id_user
+        where id_comment='{$id_comment}'";
+        return $this->db->query($sql);
+    }
+    
     public function get_comments($id_news)
     {
         $sql = "SELECT u.login, c.* FROM comments c
@@ -58,7 +65,7 @@ class Comments extends Model
 
     public function add_comment($id_user, $id_news, $comment, $id_parent = 0)
     {
-        $id_parent = !empty($data['id_parent']) ? $data['id_parent'] : null;
+        //$id_parent = !empty($data['id_parent']) ? $data['id_parent'] : null;
         $sql_user = "select id,login from users where login like '%{$id_user}%'";
         $comment = htmlspecialchars($this->db->escape($comment));
         if ($result = $this->db->query($sql_user)) {
@@ -72,5 +79,13 @@ class Comments extends Model
                 id_parent='{$id_parent}'
             ";
         $this->db->query($sql);
+        return $this->db->last_id();
+    }
+
+    public function change_comment($comment,$id_comment){
+        $sql="update comments set comment='{$comment}' where id_comment ={$id_comment}";
+        $result=$this->db->query($sql);
+        echo json_encode(array('result' => 'success'));
+        exit;
     }
 }

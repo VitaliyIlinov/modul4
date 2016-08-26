@@ -11,10 +11,12 @@ class NewsController extends Controller
 
     public function list()
     {
+        
         $params = App::getRoutes()->getParams();
         if (isset($_GET['pages'])) {
             $page = $_GET['pages'] - 1;
         }
+
 
         $page = !isset($page) ? 0 : $page;
         $this->data = $this->model->getNewsListByPage($page, 10);
@@ -23,11 +25,13 @@ class NewsController extends Controller
             $this->data = $this->model->getNewsListById($id);
             $this->model=new Comments();
             $this->data['comments']=$this->model->get_comments($id);
-            if(isset($_POST['comment']) & !empty($_POST['comment'])){
-                $this->data['comments']=$this->model->add_comment(Session::get('login'),$id,$_POST['comment']);
+//            if(isset($_POST['submit'])&& isset($_POST['comment']) && !empty($_POST['comment'])){
+            if( isset($_POST['comment']) && !empty($_POST['comment'])){
+                $this->data['comments']=$this->model->add_comment(Session::get('login'),$id,$_POST['comment'],$_POST['id_parent']);
                 Router::redirect("/news/list/{$id}");
             }
         }
+
     }
 
     public function tag()
