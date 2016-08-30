@@ -30,7 +30,7 @@ class Comments extends Model
     public function top_commentators($limit=5){
         $sql="select c.*,count(*) as cnt,u.login from comments c
               left join users u on u.id=c.id_user
-              group by c.id_user
+              group by c.id_user order by cnt desc
               limit {$limit}";
         return $this->db->query($sql);
     }

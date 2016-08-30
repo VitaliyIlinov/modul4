@@ -10,6 +10,9 @@ class Controller{
 
     public function getData()
     {
+        $promotion=new Model();
+        $id=isset($_POST['promotion_id']) ? $_POST['promotion_id']  : null;
+        $this->data['promotion']=$promotion->getPromotion($id);
         return $this->data;
     }
 

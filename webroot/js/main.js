@@ -23,7 +23,10 @@ $(function () {
 
     });
 });
-
+$('.banner >p>a').click(function(){
+    var id=$(this).parent().attr("id");
+    $.post( "/index/list/", { promotion_id: id } );
+});
 $(document).ready(function () {
     $('.panel-footer #answer').click(function () {
         var panel_info = $(this).closest('.panel');

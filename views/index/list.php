@@ -1,4 +1,4 @@
-<div class="starter-template">
+
 <!--        --><?php
 //        echo "<pre>";
 //        print_r($data);
@@ -20,7 +20,6 @@
             <?php endif; ?>
         <?php endforeach; ?>
     <?php endforeach; ?>
-</div>
 <div class="slider">
     <ul>
         <?= $cnt = 0; ?>

@@ -127,8 +127,42 @@ class Newss extends Model
         return ($result);
     }
 
+    public function getNewsByFilter($data){
+        if(!$data['date_ot']){
+            $sql="select date(min(n.date_news)) as dat from news n";
+            $date=$this->db->query($sql);
+            $data['date_ot']=$date[0]['dat'];
+        }
+        if(!$data['date_do']){
+            $sql="select date(max(n.date_news)) as dat from news n";
+            $date=$this->db->query($sql);
+            $data['date_do']=$date[0]['dat'];
+        }
+        $sql="select distinct  n.* from news n
+              left join tag_news t on t.id_news=n.id_news
+              where date(date_news)between '{$data['date_ot']}' and '{$data['date_do']}'";
+        if(isset($data['tags'])){
+            $tmp=null;
+            foreach ($data['tags'] as $key=>$tag) {
+                $tmp.=$key.',';
+            }
+            $data['tags']=substr($tmp,0,-1);
+            $sql.=" and t.id_tag in({$data['tags']})";
+        }
+        if(isset($data['category'])){
+            $tmp=null;
+            foreach ($data['category'] as $key=>$tag) {
+                $tmp.=$key.',';
+            }
+            $data['category']=substr($tmp,0,-1);
+            $sql.=" and n.id_category in({$data['category']})";
+        }
+//        echo "<br><br>";
+//        echo $sql;
+        return $this->db->query($sql);
+    }
 
-    public function getCategoryList($limit = 15, $order = 'date_news')
+    public function getCategoryList()
     {
         $sql = "SELECT * FROM category ";
         $result = $this->db->query($sql);

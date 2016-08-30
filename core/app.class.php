@@ -20,8 +20,8 @@ class App
         $class_name = ucfirst(self::$routes->getController()) . 'Controller';
         $method_name = strtolower(self::$routes->getMethodPrefix() . self::$routes->getAction());
 //        echo "<br>";
-//        echo 'Controller: ' . $class_name . "<br>";//indexController
-//        echo 'Action: ' . $method_name;//admin_list
+//        echo 'Controller: ' . $class_name . "<br>";
+//        echo 'Action: ' . $method_name;
         $layout = self::$routes->getMethodPrefix();
         if ($layout == 'admin_' && Session::get('role') != 'admin') {
             if ($method_name !== 'admin_login') {

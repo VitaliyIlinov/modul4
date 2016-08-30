@@ -7,13 +7,12 @@
     <title>Modul4</title>
     <link rel="stylesheet" href="/webroot/css/style.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<div class="container">
+<div class="container-fluid">
     <nav class="navbar navbar-inverse navbar-fixed-top">
-
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                     aria-expanded="false" aria-controls="navbar">
@@ -28,6 +27,7 @@
             <ul class="nav navbar-nav">
                 <li><a class="active" href="/category/list">Категории новостей</a></li>
                 <li><a href="/news/list/">Список новостей</a></li>
+                <li><a href="/find/">Поиск</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Меню
                         <span class="caret"></span></a>
@@ -60,23 +60,46 @@
                   class="navbar-form navbar-right" role="search">
                 <div class="form-group">
                     <div class="btn-group">
-                        <input type="text" autocomplete="off" id="search" data-toggle="dropdown" class="form-control"  placeholder="search"> </input>
+                        <input type="text" autocomplete="off" id="search" data-toggle="dropdown" class="form-control"
+                               placeholder="search"> </input>
                         <ul id="resSearch" class="dropdown-menu">
-<!--                            <li><a href="/users/register/">test</a></li>-->
+                            <!--                            <li><a href="/users/register/">test</a></li>-->
                         </ul>
                     </div>
                 </div>
-<!--                <button type="submit" class="btn btn-default">Поиск</button>-->
+                <!--                <button type="submit" class="btn btn-default">Поиск</button>-->
             </form>
     </nav>
 
-<div class="left"></div>
-<?php if (Session::hasFlash()) { ?>
-    <div class="starter-template">
-        <div class="alert alert-info" role="alert">
-            <?php Session::flash(); ?>
+    <?php if (Session::hasFlash()) { ?>
+        <div class="starter-template">
+            <div class="alert alert-info" role="alert">
+                <?php Session::flash(); ?>
+            </div>
         </div>
-    </div>
-<?php } ?>
-<!--<script src="/webroot/js/main.js"></script>-->
-   
+    <?php } ?>
+    <br><br>
+    <div class="row">
+        <div class="col-sm-2">
+            <?php $prom = $data['promotion'];$cnt=count($data['promotion']);
+            for ($i = 0;$i < $cnt; $i++): ?>
+            <?php if ($i == ceil($cnt/2)) : ?>
+        </div>
+        <div class="col-sm-2 col-sm-push-8">
+            <?php endif; ?>
+            <div class="banner">
+                <p class="lead"><?= $prom[$i]['firm'] ?> <?= $prom[$i]['product_name'] ?></p>
+                <p>Price : <?= $prom[$i]['price'] ?></p>
+                <p>Cnt : <?= $prom[$i]['cnt'] ?></p>
+                <p id="<?= $prom[$i]['id'] ?>">
+                    <a href="<?= $prom[$i]['site'] ?>">To <?= $prom[$i]['firm'] ?></a>
+                </p>
+            </div>
+            <?php endfor; ?>
+        </div>
+        <div class="col-sm-8 col-sm-pull-2">
+<?php
+//echo "<pre>";
+//print_r($data);
+//echo "</pre>";
+//?>
