@@ -113,7 +113,7 @@ left join news n on n.id_news=c.id_news";
                 id_parent='{$id_parent}'
             ";
         $this->db->query($sql);
-        return $this->db->last_id();
+        return $this->get_comments($id_news);
     }
 
     public function change_comment($comment,$id_comment){

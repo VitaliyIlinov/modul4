@@ -1,8 +1,8 @@
-<!--        --><?php
-//        echo "<pre>";
-//        print_r($data);
-//        echo "</pre>";
-//        ?>
+<?php
+//echo "<pre>";
+//print_r($data);
+//echo "</pre>";
+//?>
 <?php if (!isset($data['news']['count'])): ?>
     <div style="min-height: 300px;">
         <h2 style="text-align: center;"><?= $data['title_news']; ?></h2>
@@ -23,95 +23,71 @@
     </div>
     <h3> Messages: <span class="badge"><?= $data['comments']['count']; ?></span></h3>
     <?php if (Session::get('login')) : ?>
-            <form method="post" id="comment_form" action="">
-                <div class="form-group">
+        <form method="post" id="comment_form" action="">
+            <input type='hidden' id='id_news' value='<?=$data['id_news']?>'>
+            <div class="form-group">
                     <textarea rows="3" placeholder="Написать комментарий...." name="comment"
                               class="form-control"></textarea>
-                </div>
-                <input type="hidden" id="id_news" value="<?= $data['id_news'] ?>">
-                <input type="hidden" name="id_parent" id="id_parent" value="0">
-                <button type="submit" name="submit" class="btn btn-info btn-sm"><a href="#"></a> Добавить коммент
-                </button>
-                <button type="reset" class="btn btn-info btn-sm">Отмена</button>
-            </form>
+            </div>
+            <button type="submit" name="submit" class="btn btn-info btn-sm">Добавить коммент
+            </button>
+            <button type="reset" class="btn btn-info btn-sm">Отмена</button>
+        </form>
     <?php else : ?>
         <div style="margin-bottom: 50px;"><a href="/users/login/">Войдите</a>,чтобы оставить комментарий</div>
     <?php endif; ?>
 
-        <?php if ($data['comments']['count']): ?>
+    <?php if ($data['comments']['count']){
+        unset($data['comments']['count']);
+        function array_rec($comment, $level = 0)
+        {
+            static $result;
+            foreach ($comment as $item=>$value) {
+                if ($level == 1) {
+                    $result .= "<div class='panel panel-info' style='margin-left: 80px;'>";
+                } else {
+                    $result .= "<div class='panel panel-info'>";
+                }
+                $result .= "<div class='panel-heading'>";
+                $result .= "<h3 class='panel-title'>";
+                $result .= "Написал: <a>{$value['login']}</a>";
+                $result .= "Дата\Время: {$value['date_time']} </h3> </div>";
+                $result .= "<div class='panel-body'>{$value['comment']}</div>";
+                $result .= "<div class='panel-footer' style='padding: 4px 15px; overflow: hidden;'>";
+                if (Session::get('login') && $level==0){
+                    $result .= "<div style='float: left'>";
+                    $result .= "<a id='answer'>Ответить</a></div>";
+                }
+                $result .= "<div style='float: right'>";
+                $result .= "<input type='hidden' id='id_comment' value='{$value['id_comment']}'>";
+                $result .= "<input type='hidden' id='id_user' value='{$value['id_user']}'>";
+                $result .= "<button type='button' id='like' class='btn btn-default btn-xs'>
+                        Like:<span class='glyphicon glyphicon-thumbs-up'
+                             aria-hidden='true'>{$value['cnt_like']}</span>
+                     </button>";
+                $result .= "<button type='button' id='dislike' class='btn btn-default btn-xs'>
+                        Like:<span class='glyphicon glyphicon-thumbs-down'
+                             aria-hidden='true'>{$value['cnt_dislike']}</span>
+                     </button>";
+                $result .= "</div></div></div>";
+                if (isset($value['childs'])) {
+//                $result.="</div>";
+                    $level++;
+                    array_rec($value['childs'], $level);
 
-            <?php foreach ($data['comments'] as $key => $value): ?>
-                <?php if ($key === 'count') break; ?>
+                    $level = 0;
+                } else {
+//                $result.= "</div>";
+                }
+            }
+            return $result;
+        }
 
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Написал: <a><?= $value['login'] ?></a>Дата\Время:<?= $value['date_time'] ?></h3>
-                    </div>
-                    <div class="panel-body"><?= $value['comment'] ?></div>
-                    <div class="panel-footer" style="padding: 4px 15px; overflow: hidden;">
-                        <div style="float:left;">
-                            <?php if (Session::get('login')):?>
-                            <a id="answer">Ответить</a>
-                            <?php endif;?>
-                        </div>
-                        <div style="float: right;">
-                            <input type="hidden" id="id_comment" value="<?= $value['id_comment'] ?>">
-                            <input type="hidden" id="id_user" value="<?= $value['id_user'] ?>">
-                            <input type="hidden" id="id_news" value="<?= $value['id_news'] ?>">
-                            <input type="hidden" id="id_parent" value="<?= $value['id_comment'] ?>">
-
-                            <button type="button" id="like" class="btn btn-default btn-xs">Like:
-                            <span class="glyphicon glyphicon-thumbs-up"
-                                  aria-hidden="true"><?= $value['cnt_like'] ?></span>
-                            </button>
-                            <button type="button" id="dislike" class="btn btn-default btn-xs">Dislike:
-                            <span class="glyphicon glyphicon-thumbs-down"
-                                  aria-hidden="true"><?= $value['cnt_dislike'] ?></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <?php if (isset($value['childs'])): ?>
-                    <?php foreach ($value['childs'] as $key => $value): ?>
-                        <div class="panel panel-info" style="margin-left: 80px;">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    Написал: <a><?= $value['login'] ?></a>
-                                    Дата\Время:<?= $value['date_time'] ?>
-                                </h3>
-                            </div>
-                            <div class="panel-body"><?= $value['comment'] ?></div>
-                            <div class="panel-footer" style="padding: 4px 15px; overflow: hidden;">
-<!--                                <div style="float:left;">-->
-<!--                                    --><?php //if (Session::get('login')):?>
-<!--                                        <a id="change">Изменить</a>-->
-<!--                                    --><?php //endif;?>
-<!--                                </div>-->
-                                <div style="float: right;">
-                                    <input type="hidden" id="id_comment" value="<?= $value['id_comment'] ?>">
-                                    <input type="hidden" id="id_user" value="<?= $value['id_user'] ?>">
-                                    <input type="hidden" id="id_news" value="<?= $value['id_news'] ?>">
-                                    <input type="hidden" id="id_parent" value="<?= $value['id_parent'] ?>">
-
-                                    <button type="button" id="like" class="btn btn-default btn-xs">Like:
-                                    <span class="glyphicon glyphicon-thumbs-up"
-                                          aria-hidden="true"><?= $value['cnt_like'] ?></span>
-                                    </button>
-                                    <button type="button" id="dislike" class="btn btn-default btn-xs">Dislike:
-                                    <span class="glyphicon glyphicon-thumbs-down"
-                                          aria-hidden="true"><?= $value['cnt_dislike'] ?></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        <?php endif; ?>
-
-
+        $comment = array_rec($data['comments']);
+        echo $comment;
+    }
+    ?>
+<div id="test"></div>
 <?php else: ?>
     <div style="min-height: 200px; margin-top: 35px;">
         <ul class="list-unstyled">

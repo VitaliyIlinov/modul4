@@ -9,7 +9,7 @@ class CategoryController extends Controller{
         $params=App::getRoutes()->getParams();
         if(isset($params)){
             $id=$params[0];
-            $this->data=$this->model->getCategoryById($id);
+            $this->data['category']=$this->model->getCategoryById($id);
         }else {
             $this->data['category_list'] = $this->model->getCategoryList();
         }

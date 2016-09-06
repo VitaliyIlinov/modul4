@@ -12,7 +12,7 @@ class Model {
     //
     public function getPromotion($id=null){
         if (!$id) {
-            $sql = "SELECT * from promotion order by cnt desc ";
+            $sql = "SELECT * from promotion where is_active=1 order by cnt desc ";
             $results=$this->db->query($sql);
 
             $cnt_click=2;
@@ -25,9 +25,6 @@ class Model {
 
             $result=array_merge($top_clicks,$another);
             list($result[1], $result[$replace]) = array($result[$replace], $result[1]);
-//            echo "<pre>";
-//            print_r($result);
-//            echo "</pre>";exit;
             return $result;
         }else{
             $sql ="UPDATE promotion set cnt=cnt+1 where id={$id}";

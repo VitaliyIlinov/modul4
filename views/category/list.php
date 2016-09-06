@@ -1,3 +1,8 @@
+<?php
+//echo "<pre>";
+//print_r($data);
+//echo "</pre>";
+//?>
 <div class="starter-template">
 <?php if (isset($data['category_list']))  : ?>
     <h2>Категории новостей</h2>
@@ -8,12 +13,10 @@
     </ul>
 
 <?php else : ?>
-
-    <h2><?= $data[0]['category_name']; ?></h2>
-
-        <?php for ($i = 0; $i < count($data); $i++) : ?>
+    <h2><?= $data['category'][0]['category_name']; ?></h2>
+        <?php for ($i = 0; $i < count($data['category']); $i++) : ?>
             <ul class="list-unstyled">
-                <li><a href="/news/list/<?= $data[$i]['id_news']; ?>"><?= $data[$i]['title_news']; ?></a></li>
+                <li><a href="/news/list/<?= $data['category'][$i]['id_news']; ?>"><?= $data['category'][$i]['title_news']; ?></a></li>
             </ul>
         <?php endfor; ?>
 

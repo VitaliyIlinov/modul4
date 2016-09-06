@@ -39,9 +39,9 @@ class NewsController extends Controller
         $params = App::getRoutes()->getParams();
         if (isset($params)) {
             $id = $params[0];
-            $this->data = $this->model->getNewsListByTagId($id);
+            $this->data['tags'] = $this->model->getNewsListByTagId($id);
         }else{
-            $this->data=$this->model->getTagsList();
+            $this->data['tags'] =$this->model->getTagsList();
         }
     }
 }

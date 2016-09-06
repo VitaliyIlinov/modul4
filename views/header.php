@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <div class="btn-group">
                         <input type="text" autocomplete="off" id="search" data-toggle="dropdown" class="form-control"
-                               placeholder="search"> </input>
+                               placeholder="search by tags"> </input>
                         <ul id="resSearch" class="dropdown-menu">
                             <!--                            <li><a href="/users/register/">test</a></li>-->
                         </ul>
@@ -84,15 +84,15 @@
             <?php $prom = $data['promotion'];$cnt=count($data['promotion']);
             for ($i = 0;$i < $cnt; $i++): ?>
             <?php if ($i == ceil($cnt/2)) : ?>
-        </div>
-        <div class="col-sm-2 col-sm-push-8">
+                </div>
+                <div class="col-sm-2 col-sm-push-8">
             <?php endif; ?>
-            <div class="banner">
-                <p class="lead"><?= $prom[$i]['firm'] ?> <?= $prom[$i]['product_name'] ?></p>
-                <p>Price : <?= $prom[$i]['price'] ?></p>
-                <p>Cnt : <?= $prom[$i]['cnt'] ?></p>
+            <div class="banner" data-placement="right" data-toggle="tooltip"
+                 title="Купон на скидку-.........-Примените и получите 10% скидки">
+                <p>Price : <span><?= $prom[$i]['price'] ?></span> грн.</p>
+                <p>Переходов : <?= $prom[$i]['cnt'] ?></p>
                 <p id="<?= $prom[$i]['id'] ?>">
-                    <a href="<?= $prom[$i]['site'] ?>">To <?= $prom[$i]['firm'] ?></a>
+                    <a href="<?= $prom[$i]['site'] ?>"><?= $prom[$i]['firm'] ?> <?= $prom[$i]['product_name'] ?></a>
                 </p>
             </div>
             <?php endfor; ?>
