@@ -97,7 +97,7 @@
         </ul>
     </div>
     <?php if (!isset($_GET['pages'])) $_GET['pages'] = 1; ?>
-    <ul class="pagination">
+    <ul class="pagination pagination-sm">
         <?php for ($j = 1; $j <= ($data['news']['count']); $j++) : ?>
             <li <?= ($j == $_GET['pages']) ? 'class=active' : ''; ?>><a
                     href="/news/list/?pages=<?= $j; ?>"><?= $j; ?></a></li>

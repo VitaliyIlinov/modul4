@@ -9,8 +9,31 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- arcticModal -->
+    <script src="/webroot/js/articmodal_v0.3/jquery.arcticmodal-0.3.min.js"></script>
+    <link rel="stylesheet" href="/webroot/js/articmodal_v0.3/jquery.arcticmodal-0.3.css">
+    <!-- arcticModal theme -->
+    <link rel="stylesheet" href="/webroot/js/articmodal_v0.3/themes/dark.css">
+    <script src="/webroot/js/articmodal_v0.3/jquery.cookie.js"></script>
 </head>
 <body>
+<div style="display: none;">
+    <div class="box-modal" id="boxUserFirstInfo">
+        <div class="box-modal_close arcticmodal-close">закрыть</div>
+        <h1>Подписаться?</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Email">
+            </div>
+            <button class="arcticmodal-close btn btn-default">Подписаться</button>
+        </form>
+    </div>
+</div>
 <div class="container-fluid">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-header">

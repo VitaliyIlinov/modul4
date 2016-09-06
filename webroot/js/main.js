@@ -5,6 +5,25 @@ function confirmDelete() {
         return false;
     }
 }
+(function($) {
+    $(function() {
+        if (!$.cookie('smartCookies')) {
+
+            function getWindow(){
+                $('#boxUserFirstInfo').arcticmodal({
+                    closeOnOverlayClick: true,
+                    closeOnEsc: true
+                });
+                $.cookie('smartCookies', true, {
+                    expires: 7,
+                    path: '/'
+                });
+            };
+            setTimeout (getWindow, 7000);
+        }
+    })
+})(jQuery);
+
 $(function () {
     $("#search").keyup(function () {
         var search = $("#search").val();
