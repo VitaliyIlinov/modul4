@@ -14,7 +14,7 @@ class Comments extends Model
     {
         $sql = "SELECT u.login, c.* FROM comments c
         left join users u on u.id=c.id_user
-        where id_news='{$id_news}' order by id_parent,date_time desc";
+        where id_news='{$id_news}' and c.is_active=1 order by id_parent,date_time desc";
         $result = $this->db->query($sql);
         foreach ($result as $key => $value) {
             if ($value['id_parent'] == 0) {
@@ -97,9 +97,20 @@ left join news n on n.id_news=c.id_news";
         exit;
     }
 
+    public function check_comment($id_news){
+        $sql="select n.id_news from news n
+        where n.id_news={$id_news} and n.id_category=5 limit 1";
+        $result=$this->db->query($sql);
+        if(empty($result)){
+            return 1;
+        }else{
+           return 0;
+        }
+    }
+
     public function add_comment($id_user, $id_news, $comment, $id_parent = 0)
     {
-        //$id_parent = !empty($data['id_parent']) ? $data['id_parent'] : null;
+        $is_active=$this->check_comment($id_news);
         $sql_user = "select id,login from users where login like '%{$id_user}%'";
         $comment = htmlspecialchars($this->db->escape($comment));
         if ($result = $this->db->query($sql_user)) {
@@ -110,7 +121,8 @@ left join news n on n.id_news=c.id_news";
             set id_user='{$id_user}',
                 id_news='{$id_news}',
                 comment='{$comment}',
-                id_parent='{$id_parent}'
+                id_parent='{$id_parent}',
+                is_active='{$is_active}'
             ";
         $this->db->query($sql);
         return $this->get_comments($id_news);

@@ -8,6 +8,7 @@ class View{
 
     protected static function getDefaultViewPath(){
         $router=App::getRoutes();
+       // $admin=$router->getMethodPrefix();//admin_
         if (!$router){
             throw new Exception('Not found router');
         }

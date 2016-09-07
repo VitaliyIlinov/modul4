@@ -1,0 +1,11 @@
+Pop up:(модальное,всплывающее окно)
+dimox.name/popup-window-on-first-web-site-visit/
+smartlanding.biz/vsplyvayushhee-okno-pri-pervom-poseshhenii-sajta.html
+http://dbmast.ru/sozdaem-vsplyvayushhee-okno-pri-zagruzke-sajta-s-pomoshhyu-css3-i-nemnogo-javascript
+http://dontforget.pro/javascript/prostoe-modalnoe-okno-na-jquery-i-css-bez-plaginov/
+
+AJAX:
+http://anton.shevchuk.name/jquery-book/
+
+Справочник AJAX:
+http://jquery.page2page.ru/

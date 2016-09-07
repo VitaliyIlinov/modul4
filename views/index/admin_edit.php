@@ -1,4 +1,3 @@
-<div class="container">
     <h3>Edit page</h3>
     <form method="post" action="" enctype="multipart/form-data">
         <input type="hidden" name="id_news" value="<?= $data['id_news'] ?>"/>
@@ -50,4 +49,3 @@
         </div>
         <input type="submit" class="btn btn-success"/>
     </form>
-</div>

@@ -1,4 +1,3 @@
-<div class="container">
     <h3>Admin</h3>
     <table class="table table-striped" style="width :600px;">
         <?php foreach ($data as $key=>$value) : ?>
@@ -25,4 +24,4 @@
             <button class="btn btn-sm btn-success">New page</button>
         </a>
     </div>
-</div>
+   

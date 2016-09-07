@@ -1,4 +1,3 @@
-<div class="container">
     <h3>Add page</h3>
     <form method="post" action="" enctype="multipart/form-data">
         <div class="form-group">
@@ -41,4 +40,3 @@
         </div>
         <input type="submit" class="btn btn-success"/>
     </form>
-</div>
