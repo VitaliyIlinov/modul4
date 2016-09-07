@@ -101,3 +101,17 @@ img{
     background: lightgray;
     min-width: 14%;
 }
+
+div>.nav.nav-pills.nav-stacked >li>ul{
+    display: none;
+    background-color: aliceblue;
+}
+.entry:not(:first-of-type)
+{
+    margin-top: 10px;
+}
+
+.glyphicon
+{
+    font-size: 12px;
+}

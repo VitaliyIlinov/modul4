@@ -1,4 +1,3 @@
-<br/>
 <h1>Login</h1>
 <form class="form-horizontal" method="post" action="">
     <div class="form-group">
@@ -19,4 +18,3 @@
         </div>
     </div>
 </form>
-</div>

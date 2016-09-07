@@ -1,9 +1,4 @@
 <div class="starter-template">
-<!--            --><?php
-//            echo "<pre>";
-//            print_r($data);
-//            echo "</pre>";
-//            ?>
     <?php foreach ($data['comment'] as $key => $value): ?>
         <div class="panel panel-info">
             <div class="panel-heading">
@@ -13,7 +8,8 @@
                 </h3>
             </div>
             <div class="panel-body"><?= $value['comment'] ?></div>
-            <div class="panel-footer" style="padding: 4px 15px; overflow: hidden;">Заголовок новости:<?= $value['title_news'] ?></div>
+            <div class="panel-footer" style="padding: 4px 15px; overflow: hidden;">Заголовок
+                новости:<?= $value['title_news'] ?></div>
         </div>
     <?php endforeach; ?>
 </div>
@@ -21,6 +17,6 @@
 <ul class="pagination">
     <?php for ($j = 1; $j <= ($data['count_page']); $j++) : ?>
         <li <?= ($j == $_GET['pages']) ? 'class=active' : ''; ?>><a
-                href="/commentator/show/<?=$data['comment'][0]['id_user']?>/?pages=<?= $j; ?>"><?= $j; ?></a></li>
+                href="/commentator/show/<?= $data['comment'][0]['id_user'] ?>/?pages=<?= $j; ?>"><?= $j; ?></a></li>
     <?php endfor; ?>
 </ul>

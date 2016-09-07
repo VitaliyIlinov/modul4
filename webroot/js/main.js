@@ -5,11 +5,11 @@ function confirmDelete() {
         return false;
     }
 }
-(function($) {
-    $(function() {
+(function ($) {
+    $(function () {
         if (!$.cookie('smartCookies')) {
 
-            function getWindow(){
+            function getWindow() {
                 $('#boxUserFirstInfo').arcticmodal({
                     closeOnOverlayClick: true,
                     closeOnEsc: true
@@ -19,7 +19,7 @@ function confirmDelete() {
                     path: '/'
                 });
             };
-            setTimeout (getWindow, 7000);
+            setTimeout(getWindow, 7000);
         }
     })
 })(jQuery);
@@ -79,20 +79,20 @@ $(document).ready(function () {
                 var $cnt = parseInt($('.badge').text());
                 $('.badge').html($cnt + 1);
                 var data = $(data);
-                var elements=data.find('.panel');
+                var elements = data.find('.panel');
                 $('.panel').remove();
                 $('#comment_form textarea').val('');
-                var comments='';
-                elements.each(function( index ) {
-                   comments+=( elements.get(index).outerHTML );
+                var comments = '';
+                elements.each(function (index) {
+                    comments += ( elements.get(index).outerHTML );
                 });
-                 $('#comment_form').after( comments );
+                $('#comment_form').after(comments);
             }
-          //  , 'json'
+            //  , 'json'
         );
     });
 });
-$( document ).on('click','.panel-footer #answer', function () {
+$(document).on('click', '.panel-footer #answer', function () {
     var panel_info = $(this).closest('.panel');
     $(panel_info).after($('#comment_form'));
     $("button:reset").click(function () {
@@ -101,11 +101,11 @@ $( document ).on('click','.panel-footer #answer', function () {
 });
 
 $(document).ready(function () {
-    $(document).on('click','button#like',function () {
-            setVote('like', $(this));
+    $(document).on('click', 'button#like', function () {
+        setVote('like', $(this));
     });
 
-    $(document).on('click','button#dislike',function () {
+    $(document).on('click', 'button#dislike', function () {
         setVote('dislike', $(this));
     });
 
@@ -151,7 +151,7 @@ function setVote(type, element) {
 
 $(document).ready(function () {
     $('#read').text(randomInteger(1, 5));
-    setInterval (function(){
+    setInterval(function () {
         $('#read').text(randomInteger(1, 5));
     }, 3000);
 });
@@ -162,13 +162,51 @@ function randomInteger(min, max) {
     return rand;
 }
 
-$(document).ready(function () {
-    $(window).on('beforeunload', function() {
-        //document.write('<div>.....................</div>');  // HTML код в одну строчку!!!
-        return "Вы точно решили покинуть наш сайт?";
-    });
+// $(document).ready(function () {
+//     $(window).on('beforeunload', function () {
+//         //document.write('<div>.....................</div>');  // HTML код в одну строчку!!!
+//         return "Вы точно решили покинуть наш сайт?";
+//     });
+//
+//     $('a').click(function () {
+//         $(window).off('beforeunload');
+//     });
+// });
 
-    $('a').click(function() {
-        $(window).off('beforeunload');
+$(document).ready(function () {
+    $('div> .nav>li>a').click(function () {
+        $('.nav>li').removeClass("active");
+        var $li = $(this).parent();
+        $li.addClass("active");
+        var $ul = $(this).next();
+        $('div> .nav>li>ul').hide(300);
+        $ul.slideToggle("slow");
+    });
+});
+
+
+
+
+
+$(function()
+{
+    $(document).on('click','.btn-add', function(e)
+    {
+        e.preventDefault();
+        var controlForm = $('.controls form:first'),
+            currentEntry = $(this).parents('.entry:first'),
+            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+        newEntry.find('input').val('');
+        controlForm.find('.entry:not(:last) .btn-add')
+            .removeClass('btn-add').addClass('btn-remove')
+            .removeClass('btn-success').addClass('btn-danger')
+            .html('<span class="glyphicon glyphicon-minus"></span>');
+    }).on('click', '.btn-remove', function(e)
+    {
+        $(this).parents('.entry:first').remove();
+
+        e.preventDefault();
+        return false;
     });
 });

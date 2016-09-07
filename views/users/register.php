@@ -1,5 +1,3 @@
-
-<br/>
 <h1>Registration</h1>
 <form class="form-horizontal" method="post" action="">
     <div class="form-group">
@@ -26,4 +24,3 @@
         </div>
     </div>
 </form>
-</div>

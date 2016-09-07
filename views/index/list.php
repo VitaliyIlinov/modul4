@@ -1,11 +1,4 @@
-
-<!--        --><?php
-//        echo "<pre>";
-//        print_r($data);
-//        echo "</pre>";
-//        ?>
-    <?php
-    foreach ($data as $category => $item) {
+<?php foreach ($data as $category => $item) {
         if (isset($item['id_category'])) {
             $b[$item['category_name']] = $item['id_category'];
         }
@@ -36,7 +29,6 @@
 </li>
 <?php endif; ?>
 <?php endforeach; ?>
-
 </ul>
 </div>
 <script type="text/javascript">

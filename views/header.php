@@ -17,6 +17,7 @@
     <script src="/webroot/js/articmodal_v0.3/jquery.cookie.js"></script>
 </head>
 <body>
+
 <div style="display: none;">
     <div class="box-modal" id="boxUserFirstInfo">
         <div class="box-modal_close arcticmodal-close">закрыть</div>
@@ -34,95 +35,103 @@
         </form>
     </div>
 </div>
-<div class="container-fluid">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Project name</a>
-        </div>
-        <ul id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a class="active" href="/category/list">Категории новостей</a></li>
-                <li><a href="/news/list/">Список новостей</a></li>
-                <li><a href="/find/">Поиск</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Меню
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Меню 1</a></li>
-                        <li class="dropdown-submenu">
-                            <a href="#">Выпадающее меню</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Сабменю 1</a></li>
-                                <li><a href="#">Сабменю 2</a></li>
-                                <li><a href="#">Сабменю 3</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Меню 2</a></li>
-                        <li><a href="#">Меню 3</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <?php if (Session::get('login')): ?>
-                    <li><a href="/">Hello <?= Session::get('login'); ?></a></li>
-                    <li><a href="/users/logout/">Logout</a></li>
-                <?php else : ?>
-                    <li><a href="/users/register/">Register</a></li>
-                    <li><a href="/users/login/">login</a></li>
-                <?php endif; ?>
 
-            </ul>
-            <form action="search.php" method="post" name="form" onsubmit="return false;"
-                  class="navbar-form navbar-right" role="search">
-                <div class="form-group">
-                    <div class="btn-group">
-                        <input type="text" autocomplete="off" id="search" data-toggle="dropdown" class="form-control"
-                               placeholder="search by tags"> </input>
-                        <ul id="resSearch" class="dropdown-menu">
-                            <!--                            <li><a href="/users/register/">test</a></li>-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Project name</a>
+    </div>
+    <ul id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a class="active" href="/category/list">Категории новостей</a></li>
+            <li><a href="/news/list/">Список новостей</a></li>
+            <li><a href="/find/">Поиск</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Меню
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Меню 1</a></li>
+                    <li class="dropdown-submenu">
+                        <a href="#">Выпадающее меню</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Сабменю 1</a></li>
+                            <li><a href="#">Сабменю 2</a></li>
+                            <li><a href="#">Сабменю 3</a></li>
                         </ul>
-                    </div>
-                </div>
-                <!--                <button type="submit" class="btn btn-default">Поиск</button>-->
-            </form>
-    </nav>
-
-    <?php if (Session::hasFlash()) { ?>
-        <div class="starter-template">
-            <div class="alert alert-info" role="alert">
-                <?php Session::flash(); ?>
-            </div>
-        </div>
-    <?php } ?>
-    <br><br>
-    <div class="row">
-        <div class="col-sm-2">
-            <?php $prom = $data['promotion'];$cnt=count($data['promotion']);
-            for ($i = 0;$i < $cnt; $i++): ?>
-            <?php if ($i == ceil($cnt/2)) : ?>
-                </div>
-                <div class="col-sm-2 col-sm-push-8">
+                    </li>
+                    <li><a href="#">Меню 2</a></li>
+                    <li><a href="#">Меню 3</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <?php if (Session::get('login')): ?>
+                <li><a href="/">Hello <?= Session::get('login'); ?></a></li>
+                <li><a href="/users/logout/">Logout</a></li>
+            <?php else : ?>
+                <li><a href="/users/register/">Register</a></li>
+                <li><a href="/users/login/">login</a></li>
             <?php endif; ?>
-            <div class="banner" data-placement="right" data-toggle="tooltip"
-                 title="Купон на скидку-.........-Примените и получите 10% скидки">
-                <p>Price : <span><?= $prom[$i]['price'] ?></span> грн.</p>
-                <p>Переходов : <?= $prom[$i]['cnt'] ?></p>
-                <p id="<?= $prom[$i]['id'] ?>">
-                    <a href="<?= $prom[$i]['site'] ?>"><?= $prom[$i]['firm'] ?> <?= $prom[$i]['product_name'] ?></a>
-                </p>
+        </ul>
+        <form action="search.php" method="post" name="form" onsubmit="return false;"
+              class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+                <div class="btn-group">
+                    <input type="text" autocomplete="off" id="search" data-toggle="dropdown" class="form-control"
+                           placeholder="search by tags"> </input>
+                    <ul id="resSearch" class="dropdown-menu">
+                    </ul>
+                </div>
             </div>
-            <?php endfor; ?>
+        </form>
+</nav>
+
+<?php if (Session::hasFlash()) { ?>
+    <div class="starter-template">
+        <div class="alert alert-info" role="alert">
+            <?php Session::flash(); ?>
         </div>
-        <div class="col-sm-8 col-sm-pull-2">
-<?php
-//echo "<pre>";
-//print_r($data);
-//echo "</pre>";
-//?>
+    </div>
+<?php } ?>
+<br>
+<?php if (Session::get('login') != 'admin'): ?>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <?php for ($prom = $data['promotion'], $cnt = count($data['promotion']), $i = 0;
+                $i < $cnt;
+                $i++): ?>
+                <?php if ($i == ceil($cnt / 2)) : ?>
+            </div>
+            <div class="col-sm-2 col-sm-push-8">
+                <?php endif; ?>
+                <div class="banner" data-placement="right" data-toggle="tooltip"
+                     title="Купон на скидку-.........-Примените и получите 10% скидки">
+                    <p>Price : <span><?= $prom[$i]['price'] ?></span> грн.</p>
+                    <p>Переходов : <?= $prom[$i]['cnt'] ?></p>
+                    <p id="<?= $prom[$i]['id'] ?>">
+                        <a href="<?= $prom[$i]['site'] ?>"><?= $prom[$i]['firm'] ?> <?= $prom[$i]['product_name'] ?></a>
+                    </p>
+                </div>
+                <?php endfor; ?>
+            </div>
+            <div class="col-sm-8 col-sm-pull-2">
+                <?php include $this->path; ?>
+            </div>
+        </div>
+    </div>
+
+<?php else: ?>
+    <?php include VIEW_PATH . DS . App::getRoutes()->getMethodPrefix() . DS . 'admin_menu.php'; ?>
+    <!--    --><?php //include $this->path; ?>
+<?php endif; ?>
+<?php include VIEW_PATH . DS . 'footer.php'; ?>
+</body>
+<script src="/webroot/js/main.js"></script>
+</html>

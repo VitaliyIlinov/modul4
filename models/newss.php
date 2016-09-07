@@ -79,7 +79,6 @@ class Newss extends Model
         for ($i = 0; $i < count($result); $i++) {
             $results[$result[$i]['id_tag']] = $result[$i]['tag_name'];
         }
-        //$results['count']= $result[$i-1]['count'];
         return $results;
     }
     
@@ -186,6 +185,12 @@ class Newss extends Model
         // return isset($result[0]) ? ($result[0]) : null;
     }
 
+    public function admin_add_tag($tag_name)
+    {
+        $sql="insert into tags set tag_name='{$tag_name}'";
+        return $this->db->query($sql);
+    }
+    
     public function saveTag($tags, $id_news = null)
     {
         $cnt_tags = count($tags);

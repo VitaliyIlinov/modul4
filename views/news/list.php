@@ -1,8 +1,3 @@
-<?php
-//echo "<pre>";
-//print_r($data);
-//echo "</pre>";
-//?>
 <?php if (!isset($data['news']['count'])): ?>
     <div style="min-height: 300px;">
         <h2 style="text-align: center;"><?= $data['title_news']; ?></h2>
@@ -24,7 +19,7 @@
     <h3> Messages: <span class="badge"><?= $data['comments']['count']; ?></span></h3>
     <?php if (Session::get('login')) : ?>
         <form method="post" id="comment_form" action="">
-            <input type='hidden' id='id_news' value='<?=$data['id_news']?>'>
+            <input type='hidden' id='id_news' value='<?= $data['id_news'] ?>'>
             <div class="form-group">
                     <textarea rows="3" placeholder="Написать комментарий...." name="comment"
                               class="form-control"></textarea>
@@ -37,12 +32,12 @@
         <div style="margin-bottom: 50px;"><a href="/users/login/">Войдите</a>,чтобы оставить комментарий</div>
     <?php endif; ?>
 
-    <?php if ($data['comments']['count']){
+    <?php if ($data['comments']['count']) {
         unset($data['comments']['count']);
         function array_rec($comment, $level = 0)
         {
             static $result;
-            foreach ($comment as $item=>$value) {
+            foreach ($comment as $item => $value) {
                 if ($level == 1) {
                     $result .= "<div class='panel panel-info' style='margin-left: 80px;'>";
                 } else {
@@ -54,7 +49,7 @@
                 $result .= "Дата\Время: {$value['date_time']} </h3> </div>";
                 $result .= "<div class='panel-body'>{$value['comment']}</div>";
                 $result .= "<div class='panel-footer' style='padding: 4px 15px; overflow: hidden;'>";
-                if (Session::get('login') && $level==0){
+                if (Session::get('login') && $level == 0) {
                     $result .= "<div style='float: left'>";
                     $result .= "<a id='answer'>Ответить</a></div>";
                 }
@@ -87,7 +82,7 @@
         echo $comment;
     }
     ?>
-<div id="test"></div>
+    <div id="test"></div>
 <?php else: ?>
     <div style="min-height: 200px; margin-top: 35px;">
         <ul class="list-unstyled">
@@ -104,7 +99,3 @@
         <?php endfor; ?>
     </ul>
 <?php endif; ?>
-
-
-</div>
-

@@ -1,9 +1,4 @@
 <div class="starter-template">
-    <?php
-//    echo "<pre>";
-//    print_r($data);
-//    echo "</pre>";
-    ?>
     <form method="post" action="" class="form-horizontal">
         <h2>Date:</h2>
         <div class="form-inline">
@@ -37,7 +32,7 @@
         <h2>Results:</h2>
         <ul class="list-unstyled">
             <?php foreach ($data['filter'] as $value): ?>
-                <li><a href="/news/list/<?=$value['id_news']?>"><?=$value['title_news']?></a></li>
+                <li><a href="/news/list/<?= $value['id_news'] ?>"><?= $value['title_news'] ?></a></li>
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>
