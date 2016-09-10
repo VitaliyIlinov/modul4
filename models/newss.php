@@ -255,6 +255,9 @@ class Newss extends Model
         $content = $this->db->escape($data['content_news']);
         $is_published = isset($data['is_published']) ? 1 : 0;
         $is_analitic = isset($data['is_analitic']) ? 1 : 0;
+        if ($image) {
+
+        }
         // echo "<pre>";print_r($data); exit;
         if (!$id) {
             $sql = "
@@ -269,23 +272,23 @@ class Newss extends Model
             $result = $this->db->query($sql);
             $id = $this->db->last_id();
         } else {
-            $sql = "
-            update news
+            $sql = "update news
             set id_category='{$id_category}',
                 title_news='{$title}',
                 content_news='{$content}',
                 is_published='{$is_published}',
-                is_analitic='{$is_analitic}',
-                image_news='{$image}'
-                where id_news={$id}
-            ";
+                is_analitic='{$is_analitic}'";
+            if ($image) {
+                $sql .= ", image_news='{$image}' ";
+            }
+            $sql .= " where id_news={$id} ";
             $result = $this->db->query($sql);
         }
+
         if (isset($data['tags'])) {
             $this->saveTag($data['tags'], $id);
         }
         return $result;
-
     }
 
     public function delete($id)

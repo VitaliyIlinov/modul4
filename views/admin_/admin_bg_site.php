@@ -1,8 +1,3 @@
-<?php
-//echo "<pre>";
-//print_r($data);
-//echo "</pre>";
-?>
 <h3>Add page</h3>
 <form method="post" action="" enctype="multipart/form-data">
     <div class="form-group">
@@ -18,4 +13,3 @@
     </div>
     <input type="submit" value="Ok" class="btn btn-success"/>
 </form>
-<!--<div style="min-height: 300px; min-width: 300px; background-color: #0fcef0;"></div>-->

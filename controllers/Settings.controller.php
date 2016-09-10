@@ -11,7 +11,6 @@ class SettingsController extends Controller
     public function admin_bg_site()
     {
         if ($_POST){
-            //print_r($_POST);exit;
             $id=key($_POST);
             $color=$_POST[$id];
             $this->model->save($id,$color);

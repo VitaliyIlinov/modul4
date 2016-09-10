@@ -2,41 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9ec962c-20ba-4be7-b6d5-eb0b66685054" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/Settings.controller.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/promotions.controller.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Setting.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/promotion.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/admin_/admin_bg_site.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/admin_/admin_category.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/admin_/admin_comments_list.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/admin_/admin_edit_comment.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/admin_/admin_edit_promotion.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/admin_/admin_promotion_add.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/admin_/admin_promotion_list.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/admin_/admin_user_list.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/views/admin_/admin_addtag.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/controllers/commentator.controller.php" afterPath="$PROJECT_DIR$/controllers/comments.controller.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/models/comments.php" afterPath="$PROJECT_DIR$/models/comment.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/views/commentator/show.php" afterPath="$PROJECT_DIR$/views/comments/show.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/image/РєРѕС‚СЌ-РљР»РёРєР°Р±РµР»СЊРЅРѕ-РѕР±РѕРё-РєСЂР°СЃРёРІС‹Рµ-РєР°СЂС‚РёРЅРєРё-2629498.jpeg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lessons.rar" afterPath="$PROJECT_DIR$/lessons.rar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/image/1.jpg" afterPath="$PROJECT_DIR$/webroot/image/1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/image/2.jpg" afterPath="$PROJECT_DIR$/webroot/image/2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/image/3.jpg" afterPath="$PROJECT_DIR$/webroot/image/3.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/ajax.controller.php" afterPath="$PROJECT_DIR$/controllers/ajax.controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/index.controller.php" afterPath="$PROJECT_DIR$/controllers/index.controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/news.controller.php" afterPath="$PROJECT_DIR$/controllers/news.controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/users.controller.php" afterPath="$PROJECT_DIR$/controllers/users.controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/controller.class.php" afterPath="$PROJECT_DIR$/core/controller.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/model.class.php" afterPath="$PROJECT_DIR$/core/model.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/Settings.controller.php" afterPath="$PROJECT_DIR$/controllers/Settings.controller.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/newss.php" afterPath="$PROJECT_DIR$/models/newss.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/user.php" afterPath="$PROJECT_DIR$/models/user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin_/admin_list.php" afterPath="$PROJECT_DIR$/views/admin_/admin_list.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin_/admin_login.php" afterPath="$PROJECT_DIR$/views/admin_/admin_login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin_/admin_menu.php" afterPath="$PROJECT_DIR$/views/admin_/admin_menu.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin_/admin_tag.php" afterPath="$PROJECT_DIR$/views/admin_/admin_tag.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/footer.php" afterPath="$PROJECT_DIR$/views/footer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/header.php" afterPath="$PROJECT_DIR$/views/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index/list.php" afterPath="$PROJECT_DIR$/views/index/list.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/css/style.css" afterPath="$PROJECT_DIR$/webroot/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/js/main.js" afterPath="$PROJECT_DIR$/webroot/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modulfour.sql" afterPath="$PROJECT_DIR$/modulfour.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin_/admin_bg_site.php" afterPath="$PROJECT_DIR$/views/admin_/admin_bg_site.php" />
     </list>
     <ignored path="lessons.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,104 +39,48 @@
     <favorites_list name="lessons" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="admin_menu.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/admin_/admin_menu.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="280">
-                  <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/header.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="133" column="10" selection-start-line="133" selection-start-column="10" selection-end-line="133" selection-end-column="10" />
-                  <folding>
-                    <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <marker date="1473531865220" expanded="true" signature="1216:1240" placeholder="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="news.controller.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/controllers/news.controller.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="admin_login.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/admin_/admin_login.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="newss.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/models/newss.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="384">
-                  <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
-                  <folding>
-                    <marker date="1473532544186" expanded="true" signature="124:166" placeholder="SELECT a.*,c... news" />
-                    <marker date="1473532544186" expanded="true" signature="735:765" placeholder="select count... " />
-                    <marker date="1473532544186" expanded="true" signature="735:772" placeholder="select count... " />
-                    <marker date="1473532544186" expanded="true" signature="1610:1790" placeholder="SELECT count... " />
-                    <marker date="1473532544186" expanded="true" signature="1902:1968" placeholder="UPDATE news " />
-                    <marker date="1473532544186" expanded="true" signature="2177:2273" placeholder="INSERT INTO log... " />
-                    <marker date="1473532544186" expanded="true" signature="2412:2606" placeholder="select n.*,t... news" />
-                    <marker date="1473532544186" expanded="true" signature="2412:2717" placeholder="select n.*,t... news" />
-                    <marker date="1473532544186" expanded="true" signature="3148:3200" placeholder="SELECT * FRO... tags" />
-                    <marker date="1473532544186" expanded="true" signature="3305:3359" placeholder="select *,(se... " />
-                    <marker date="1473532544186" expanded="true" signature="3315:3340" placeholder="select count... tags" />
-                    <marker date="1473532544186" expanded="true" signature="3716:3913" placeholder="SELECT t.id_... news" />
-                    <marker date="1473532544186" expanded="true" signature="4716:4976" placeholder="select n.*,t... news" />
-                    <marker date="1473532544186" expanded="true" signature="5230:5278" placeholder="select date(... " />
-                    <marker date="1473532544186" expanded="true" signature="5230:5301" placeholder="select date(... " />
-                    <marker date="1473532544186" expanded="true" signature="5459:5507" placeholder="select date(... " />
-                    <marker date="1473532544186" expanded="true" signature="5459:5530" placeholder="select date(... " />
-                    <marker date="1473532544186" expanded="true" signature="5651:5851" placeholder="select disti... news" />
-                    <marker date="1473532544186" expanded="true" signature="6591:6613" placeholder="SELECT * FRO... category" />
-                    <marker date="1473532544186" expanded="true" signature="6966:7092" placeholder="select * fro... news" />
-                    <marker date="1473532544186" expanded="true" signature="7358:7404" placeholder="insert into tags... " />
-                    <marker date="1473532544186" expanded="true" signature="7539:7556" placeholder="insert into tags... " />
-                    <marker date="1473532544186" expanded="true" signature="7539:7568" placeholder="insert into tags... " />
-                    <marker date="1473532544186" expanded="true" signature="7539:7576" placeholder="insert into tags... " />
-                    <marker date="1473532544186" expanded="true" signature="7539:7588" placeholder="insert into tags... " />
-                    <marker date="1473532544186" expanded="true" signature="7745:7792" placeholder="delete from " />
-                    <marker date="1473532544186" expanded="true" signature="7892:7999" placeholder="insert into tag_news... " />
-                    <marker date="1473532544186" expanded="true" signature="8172:8276" placeholder="select n.*,c... news" />
-                    <marker date="1473532544186" expanded="true" signature="8172:8441" placeholder="select * fro... news" />
-                    <marker date="1473532544186" expanded="true" signature="9509:9785" placeholder="insert into news... " />
-                    <marker date="1473532544186" expanded="true" signature="9937:10239" placeholder="update news " />
-                    <marker date="1473532544186" expanded="true" signature="10520:10552" placeholder="delete from " />
-                    <marker date="1473532544186" expanded="true" signature="10688:10719" placeholder="delete from " />
-                    <marker date="1473532544186" expanded="true" signature="10860:10900" placeholder="delete from " />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="admin_bg_site.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/admin_/admin_bg_site.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin_menu.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/admin_/admin_menu.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/settings.controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/app.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="19" column="60" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -218,10 +137,7 @@
         <option value="$PROJECT_DIR$/controllers/configs.controller.php" />
         <option value="$PROJECT_DIR$/core/controller.class.php" />
         <option value="$PROJECT_DIR$/core/model.class.php" />
-        <option value="$PROJECT_DIR$/controllers/Settings.controller.php" />
-        <option value="$PROJECT_DIR$/views/admin_/admin_bg_site.php" />
         <option value="$PROJECT_DIR$/models/Setting.php" />
-        <option value="$PROJECT_DIR$/views/admin_/admin_menu.php" />
         <option value="$PROJECT_DIR$/controllers/news.controller.php" />
         <option value="$PROJECT_DIR$/controllers/users.controller.php" />
         <option value="$PROJECT_DIR$/views/admin_/admin_user_list.php" />
@@ -230,6 +146,9 @@
         <option value="$PROJECT_DIR$/views/admin_/admin_login.php" />
         <option value="$PROJECT_DIR$/views/header.php" />
         <option value="$PROJECT_DIR$/models/newss.php" />
+        <option value="$PROJECT_DIR$/views/admin_/admin_bg_site.php" />
+        <option value="$PROJECT_DIR$/controllers/Settings.controller.php" />
+        <option value="$PROJECT_DIR$/views/admin_/admin_menu.php" />
       </list>
     </option>
   </component>
@@ -303,7 +222,53 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lessons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lessons" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lessons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lessons" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lessons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lessons" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -525,7 +490,7 @@
       <workItem from="1473227929785" duration="42838000" />
       <workItem from="1473349385677" duration="23048000" />
       <workItem from="1473406547315" duration="7929000" />
-      <workItem from="1473491634225" duration="30088000" />
+      <workItem from="1473491634225" duration="34953000" />
     </task>
     <task id="LOCAL-00001" summary="before index">
       <created>1469635628958</created>
@@ -566,7 +531,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1416160000" />
+    <option name="totallyTimeSpent" value="1421025000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -720,17 +685,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/admin_/admin_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
-          <folding>
-            <element signature="e#6#21#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/admin.controller.php" />
     <entry file="file://$PROJECT_DIR$/core/load.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -777,14 +731,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/app.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="60" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -951,14 +897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/admin_/admin_add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/promotion.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -977,15 +915,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/admin_/admin_bg_site.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Setting.php">
+    <entry file="file://$PROJECT_DIR$/models/setting.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
@@ -994,14 +924,6 @@
             <marker date="1473516561367" expanded="true" signature="115:162" placeholder="update setti... " />
             <marker date="1473516561367" expanded="true" signature="115:167" placeholder="update setti... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/Settings.controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1086,22 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/admin_/admin_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="24" column="62" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/admin_/admin_login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/comment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1037">
@@ -1138,17 +1044,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="133" column="10" selection-start-line="133" selection-start-column="10" selection-end-line="133" selection-end-column="10" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1473531865220" expanded="true" signature="1216:1240" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/comments.controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
@@ -1173,22 +1068,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/admin_/admin_menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/news.controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3808">
@@ -1197,46 +1076,133 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="133" column="10" selection-start-line="133" selection-start-column="10" selection-end-line="133" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1473531865220" expanded="true" signature="1216:1240" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/admin_/admin_login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/image/РєРѕС‚СЌ-РљР»РёРєР°Р±РµР»СЊРЅРѕ-РѕР±РѕРё-РєСЂР°СЃРёРІС‹Рµ-РєР°СЂС‚РёРЅРєРё-2629498.jpeg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/image/2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/news.controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="91" column="27" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/admin_/admin_add.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="46" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/newss.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
+        <state relative-caret-position="1235">
+          <caret line="275" column="45" selection-start-line="275" selection-start-column="45" selection-end-line="275" selection-end-column="45" />
           <folding>
-            <marker date="1473532544186" expanded="true" signature="124:166" placeholder="SELECT a.*,c... news" />
-            <marker date="1473532544186" expanded="true" signature="735:765" placeholder="select count... " />
-            <marker date="1473532544186" expanded="true" signature="735:772" placeholder="select count... " />
-            <marker date="1473532544186" expanded="true" signature="1610:1790" placeholder="SELECT count... " />
-            <marker date="1473532544186" expanded="true" signature="1902:1968" placeholder="UPDATE news " />
-            <marker date="1473532544186" expanded="true" signature="2177:2273" placeholder="INSERT INTO log... " />
-            <marker date="1473532544186" expanded="true" signature="2412:2606" placeholder="select n.*,t... news" />
-            <marker date="1473532544186" expanded="true" signature="2412:2717" placeholder="select n.*,t... news" />
-            <marker date="1473532544186" expanded="true" signature="3148:3200" placeholder="SELECT * FRO... tags" />
-            <marker date="1473532544186" expanded="true" signature="3305:3359" placeholder="select *,(se... " />
-            <marker date="1473532544186" expanded="true" signature="3315:3340" placeholder="select count... tags" />
-            <marker date="1473532544186" expanded="true" signature="3716:3913" placeholder="SELECT t.id_... news" />
-            <marker date="1473532544186" expanded="true" signature="4716:4976" placeholder="select n.*,t... news" />
-            <marker date="1473532544186" expanded="true" signature="5230:5278" placeholder="select date(... " />
-            <marker date="1473532544186" expanded="true" signature="5230:5301" placeholder="select date(... " />
-            <marker date="1473532544186" expanded="true" signature="5459:5507" placeholder="select date(... " />
-            <marker date="1473532544186" expanded="true" signature="5459:5530" placeholder="select date(... " />
-            <marker date="1473532544186" expanded="true" signature="5651:5851" placeholder="select disti... news" />
-            <marker date="1473532544186" expanded="true" signature="6591:6613" placeholder="SELECT * FRO... category" />
-            <marker date="1473532544186" expanded="true" signature="6966:7092" placeholder="select * fro... news" />
-            <marker date="1473532544186" expanded="true" signature="7358:7404" placeholder="insert into tags... " />
-            <marker date="1473532544186" expanded="true" signature="7539:7556" placeholder="insert into tags... " />
-            <marker date="1473532544186" expanded="true" signature="7539:7568" placeholder="insert into tags... " />
-            <marker date="1473532544186" expanded="true" signature="7539:7576" placeholder="insert into tags... " />
-            <marker date="1473532544186" expanded="true" signature="7539:7588" placeholder="insert into tags... " />
-            <marker date="1473532544186" expanded="true" signature="7745:7792" placeholder="delete from " />
-            <marker date="1473532544186" expanded="true" signature="7892:7999" placeholder="insert into tag_news... " />
-            <marker date="1473532544186" expanded="true" signature="8172:8276" placeholder="select n.*,c... news" />
-            <marker date="1473532544186" expanded="true" signature="8172:8441" placeholder="select * fro... news" />
-            <marker date="1473532544186" expanded="true" signature="9509:9785" placeholder="insert into news... " />
-            <marker date="1473532544186" expanded="true" signature="9937:10239" placeholder="update news " />
-            <marker date="1473532544186" expanded="true" signature="10520:10552" placeholder="delete from " />
-            <marker date="1473532544186" expanded="true" signature="10688:10719" placeholder="delete from " />
-            <marker date="1473532544186" expanded="true" signature="10860:10900" placeholder="delete from " />
+            <marker date="1473534824671" expanded="true" signature="124:166" placeholder="SELECT a.*,c... news" />
+            <marker date="1473534824671" expanded="true" signature="735:765" placeholder="select count... " />
+            <marker date="1473534824671" expanded="true" signature="735:772" placeholder="select count... " />
+            <marker date="1473534824671" expanded="true" signature="1610:1790" placeholder="SELECT count... " />
+            <marker date="1473534824671" expanded="true" signature="1902:1968" placeholder="UPDATE news " />
+            <marker date="1473534824671" expanded="true" signature="2177:2273" placeholder="INSERT INTO log... " />
+            <marker date="1473534824671" expanded="true" signature="2412:2606" placeholder="select n.*,t... news" />
+            <marker date="1473534824671" expanded="true" signature="2412:2717" placeholder="select n.*,t... news" />
+            <marker date="1473534824671" expanded="true" signature="3148:3200" placeholder="SELECT * FRO... tags" />
+            <marker date="1473534824671" expanded="true" signature="3305:3359" placeholder="select *,(se... " />
+            <marker date="1473534824671" expanded="true" signature="3315:3340" placeholder="select count... tags" />
+            <marker date="1473534824671" expanded="true" signature="3716:3913" placeholder="SELECT t.id_... news" />
+            <marker date="1473534824671" expanded="true" signature="4716:4976" placeholder="select n.*,t... news" />
+            <marker date="1473534824671" expanded="true" signature="5230:5278" placeholder="select date(... " />
+            <marker date="1473534824671" expanded="true" signature="5230:5301" placeholder="select date(... " />
+            <marker date="1473534824671" expanded="true" signature="5459:5507" placeholder="select date(... " />
+            <marker date="1473534824671" expanded="true" signature="5459:5530" placeholder="select date(... " />
+            <marker date="1473534824671" expanded="true" signature="5651:5851" placeholder="select disti... news" />
+            <marker date="1473534824671" expanded="true" signature="6591:6613" placeholder="SELECT * FRO... category" />
+            <marker date="1473534824671" expanded="true" signature="6966:7092" placeholder="select * fro... news" />
+            <marker date="1473534824671" expanded="true" signature="7358:7404" placeholder="insert into tags... " />
+            <marker date="1473534824671" expanded="true" signature="7539:7556" placeholder="insert into tags... " />
+            <marker date="1473534824671" expanded="true" signature="7539:7568" placeholder="insert into tags... " />
+            <marker date="1473534824671" expanded="true" signature="7539:7576" placeholder="insert into tags... " />
+            <marker date="1473534824671" expanded="true" signature="7539:7588" placeholder="insert into tags... " />
+            <marker date="1473534824671" expanded="true" signature="7745:7792" placeholder="delete from " />
+            <marker date="1473534824671" expanded="true" signature="7892:7999" placeholder="insert into tag_news... " />
+            <marker date="1473534824671" expanded="true" signature="8172:8276" placeholder="select n.*,c... news" />
+            <marker date="1473534824671" expanded="true" signature="8172:8441" placeholder="select * fro... news" />
+            <marker date="1473534824671" expanded="true" signature="9542:9818" placeholder="insert into news... " />
+            <marker date="1473534824671" expanded="true" signature="9957:10189" placeholder="update news " />
+            <marker date="1473534824671" expanded="true" signature="10244:10266" placeholder="update news " />
+            <marker date="1473534824671" expanded="true" signature="10385:10404" placeholder="update news " />
+            <marker date="1473534824671" expanded="true" signature="10589:10621" placeholder="delete from " />
+            <marker date="1473534824671" expanded="true" signature="10757:10788" placeholder="delete from " />
+            <marker date="1473534824671" expanded="true" signature="10929:10969" placeholder="delete from " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/admin_/admin_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="24" column="62" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/app.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="19" column="60" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/settings.controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/admin_/admin_menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/admin_/admin_bg_site.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
