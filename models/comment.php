@@ -1,15 +1,16 @@
 <?php
 
-class Comments extends Model
+class Comment extends Model
 {
 
-    public function getCommentById($id_comment){
+    public function getCommentById($id_comment)
+    {
         $sql = "SELECT u.login, c.* FROM comments c
         left join users u on u.id=c.id_user
         where id_comment='{$id_comment}'";
         return $this->db->query($sql);
     }
-    
+
     public function get_comments($id_news)
     {
         $sql = "SELECT u.login, c.* FROM comments c
@@ -26,44 +27,81 @@ class Comments extends Model
         $results['count'] = count($result);
         return $results;
     }
+    
+    public function cnt_comments($limit=10){
+            $sql = "select count(*) as COUNT from comments";
+            if (Session::get('login') != 'admin') {
+                $sql .= "where is_published=1";
+            }
+            $count_news = $this->db->query($sql);
+            $total_rows = ($count_news[0]['COUNT']);
+            $num_pages = ceil($total_rows / $limit);
+            return $num_pages;
+    }
+    
+    public function admin_get_comments($page = 0, $limit = 10)
+    {
+        $start = $page * $limit;
+        $sql="select c.id_comment,c.id_parent,u.login,n.title_news,cat.category_name, c.`comment`,c.date_time,c.cnt_like,c.cnt_dislike,c.is_active from comments c
+            left join users u on u.id=c.id_user
+            left join news n on n.id_news=c.id_news
+            left join category cat on cat.id_category=n.id_category order by c.date_time desc limit {$start},{$limit}";
+        $result = $this->db->query($sql);
+        $result['count']=$this->cnt_comments($limit);
+        return $result;
+    }
 
-    public function top_commentators($limit=5){
-        $sql="select c.*,count(*) as cnt,u.login from comments c
+    public function admin_delete_comment($id){
+        $sql="delete from comments where id_comment={$id}";
+        $this->db->query($sql);
+    }
+
+    public function admin_edit_comment($id){
+        $sql="select * from comments where id_comment={$id}";
+        return $this->db->query($sql);
+    }
+
+    public function top_commentators($limit = 5)
+    {
+        $sql = "select c.*,count(*) as cnt,u.login from comments c
               left join users u on u.id=c.id_user
               group by c.id_user order by cnt desc
               limit {$limit}";
         return $this->db->query($sql);
     }
 
-    public function getCommentCnt($id_user,$limit){
-        $sql="select count(*) as cnt from comments where id_user={$id_user}";
-        $cnt_pages=$this->db->query($sql);
-        $result= ceil($cnt_pages[0]['cnt']/$limit);
+    public function getCommentCnt($id_user, $limit)
+    {
+        $sql = "select count(*) as cnt from comments where id_user={$id_user}";
+        $cnt_pages = $this->db->query($sql);
+        $result = ceil($cnt_pages[0]['cnt'] / $limit);
         return $result;
     }
 
-    public function getThemes($limit=3){
-        $sql="select c.*,n.title_news from (select max(date_time) datet,id_news from comments 
+    public function getThemes($limit = 3)
+    {
+        $sql = "select c.*,n.title_news from (select max(date_time) datet,id_news from comments 
 group by id_news limit {$limit}) c
 left join news n on n.id_news=c.id_news";
         return $this->db->query($sql);
 
     }
 
-    public function getCommentsByUser($id_user,$page=0,$limit=5){
-        $page=$page*$limit;
-        $sql="select c.*,n.title_news,u.login from comments c
+    public function getCommentsByUser($id_user, $page = 0, $limit = 5)
+    {
+        $page = $page * $limit;
+        $sql = "select c.*,n.title_news,u.login from comments c
               left join users u on u.id=c.id_user
               left join news n on n.id_news=c.id_news
               where c.id_user ={$id_user} order by  c.date_time desc limit {$page},{$limit} ";
-        $result['comment']= $this->db->query($sql);
-        $result['count_page']=$this->getCommentCnt($id_user,$limit);
+        $result['comment'] = $this->db->query($sql);
+        $result['count_page'] = $this->getCommentCnt($id_user, $limit);
         return $result;
     }
-    
+
     public function vote($id_comment, $type)
     {
-        if(!Session::get('login')){
+        if (!Session::get('login')) {
             echo json_encode(array('result' => 'Login please'));
             exit;
         }
@@ -97,20 +135,21 @@ left join news n on n.id_news=c.id_news";
         exit;
     }
 
-    public function check_comment($id_news){
-        $sql="select n.id_news from news n
+    public function check_comment($id_news)
+    {
+        $sql = "select n.id_news from news n
         where n.id_news={$id_news} and n.id_category=5 limit 1";
-        $result=$this->db->query($sql);
-        if(empty($result)){
+        $result = $this->db->query($sql);
+        if (empty($result)) {
             return 1;
-        }else{
-           return 0;
+        } else {
+            return 0;
         }
     }
 
     public function add_comment($id_user, $id_news, $comment, $id_parent = 0)
     {
-        $is_active=$this->check_comment($id_news);
+        $is_active = $this->check_comment($id_news);
         $sql_user = "select id,login from users where login like '%{$id_user}%'";
         $comment = htmlspecialchars($this->db->escape($comment));
         if ($result = $this->db->query($sql_user)) {
@@ -125,13 +164,21 @@ left join news n on n.id_news=c.id_news";
                 is_active='{$is_active}'
             ";
         $this->db->query($sql);
-        return $this->get_comments($id_news);
+        //if (!$is_active) {
+            //echo 'false';
+        //}
+        $result = $this->get_comments($id_news);
+        return $result;
     }
 
-    public function change_comment($comment,$id_comment){
-        $sql="update comments set comment='{$comment}' where id_comment ={$id_comment}";
-        $result=$this->db->query($sql);
-        echo json_encode(array('result' => 'success'));
-        exit;
+    public function change_comment($id_comment, $comment,$cnt_like,$cnt_dislike,$is_active)
+    {
+        $is_active = $is_active ? 1 : 0;
+        $sql = "update comments set comment='{$comment}',
+cnt_like='{$cnt_like}',
+cnt_dislike='{$cnt_dislike}',
+is_active='{$is_active}'
+where id_comment ={$id_comment}";
+        $this->db->query($sql);
     }
 }

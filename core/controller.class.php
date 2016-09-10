@@ -13,6 +13,7 @@ class Controller{
         $promotion=new Model();
         $id=isset($_POST['promotion_id']) ? $_POST['promotion_id']  : null;
         $this->data['promotion']=$promotion->getPromotion($id);
+        $this->data['config']=$promotion->admin_color();
         return $this->data;
     }
 

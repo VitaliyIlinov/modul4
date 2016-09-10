@@ -23,7 +23,7 @@ class NewsController extends Controller
         if (isset($params)&& !isset($_GET['pages'])) {
             $id = $params[0];
             $this->data = $this->model->getNewsListById($id);
-            $this->model=new Comments();
+            $this->model=new Comment();
             $this->data['comments']=$this->model->get_comments($id);
 //            if(isset($_POST['submit'])&& isset($_POST['comment']) && !empty($_POST['comment'])){
             if( isset($_POST['comment']) && !empty($_POST['comment'])){
@@ -46,16 +46,35 @@ class NewsController extends Controller
     }
     public function admin_tag()
     {
-        $this->data['tags'] = $this->model->getTagsList();
-    }
-    public function admin_addtag()
-    {
-        if(isset($_POST['tag_name'])&& !empty($_POST['tag_name'])){
-            $tag_name=$_POST['tag_name'];
-             $result=$this->model->admin_add_tag($tag_name);
+        if(isset($_POST['new_tags'])&& !empty($_POST['new_tags'])){
+            $tags=null;
+            foreach ($_POST['new_tags'] as $tag){
+                $tags .="('{$tag}') ,";
+            }
+            $tags=substr($tags,0,-1);
+            $result=$this->model->admin_add_tag($tags);
             if($result){
                 Router::redirect('/admin/news/tag');
             }
+        }else{
+            $this->data['tags'] = $this->model->getTagsList();
+        }
+    }
+    
+    public function admin_category()
+    {
+        if(isset($_POST['new_categories'])&& !empty($_POST['new_categories'])){
+            $categories=null;
+            foreach ($_POST['new_categories'] as $category){
+                $categories .="('{$category}') ,";
+            }
+            $categories=substr($categories,0,-1);
+            $result=$this->model->admin_add_category($categories);
+            if($result){
+                Router::redirect('/admin/news/category');
+            }
+        }else{
+            $this->data['category'] = $this->model->getCategoryList();
         }
     }
 
@@ -123,6 +142,20 @@ class NewsController extends Controller
         Router::redirect('/admin/index/list');
     }
 
+    public function admin_delete_tag()
+    {
+        if (isset($this->params[0])) {
+            $result = $this->model->delete_tag($this->params[0]);
+            if ($result) {
+                Session::setFlash('Tags was deleted.');
+            } else {
+                Session::setFlash('Error.');
+            }
+        }
+        Router::redirect('/admin/news/tag');
+    }
+
+
     public function admin_list()
     {
         if (isset($_GET['pages'])) {
@@ -131,5 +164,19 @@ class NewsController extends Controller
         $page = !isset($page) ? 0 : $page;
         $this->data = $this->model->getNewsListByPage($page, 10);
     }
+    
+    public function admin_delete_category()
+    {
+        if (isset($this->params[0])) {
+            $result = $this->model->delete_category($this->params[0]);
+            if ($result) {
+                Session::setFlash('Category was deleted.');
+            } else {
+                Session::setFlash('Error.');
+            }
+        }
+        Router::redirect('/admin/news/category');
+    }
+
 
 }

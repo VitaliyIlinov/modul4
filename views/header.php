@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Modul4</title>
-    <link rel="stylesheet" href="/webroot/css/style.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webroot/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <!-- arcticModal -->
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/webroot/js/articmodal_v0.3/themes/dark.css">
     <script src="/webroot/js/articmodal_v0.3/jquery.cookie.js"></script>
 </head>
-<body>
+<body style="background-color:<?= $data['config'][1]['value']; ?>">
 
 <div style="display: none;">
     <div class="box-modal" id="boxUserFirstInfo">
@@ -36,7 +36,7 @@
     </div>
 </div>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:<?= $data['config'][0]['value'] ?>">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                 aria-expanded="false" aria-controls="navbar">
@@ -100,7 +100,7 @@
     </div>
 <?php } ?>
 <br>
-<?php if (Session::get('login') != 'admin'): ?>
+<?php if (App::getRoutes()->getMethodPrefix() == null): ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2">
@@ -126,10 +126,12 @@
             </div>
         </div>
     </div>
-
-<?php else: ?>
+<?php elseif (Session::get('login') == 'admin'): ?>
     <?php include VIEW_PATH . DS . App::getRoutes()->getMethodPrefix() . DS . 'admin_menu.php'; ?>
-    <!--    --><?php //include $this->path; ?>
+<?php else : ?>
+    <div class="container">
+    <?php include $this->path; ?>
+    </div>
 <?php endif; ?>
 <?php include VIEW_PATH . DS . 'footer.php'; ?>
 </body>

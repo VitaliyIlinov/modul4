@@ -115,3 +115,6 @@ div>.nav.nav-pills.nav-stacked >li>ul{
 {
     font-size: 12px;
 }
+.table>tbody>tr>td {
+    padding:3px;
+}

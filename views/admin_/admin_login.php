@@ -1,4 +1,4 @@
-<h1>Login</h1>
+<h1>Login for Admin </h1>
 <form class="form-horizontal" method="post" action="">
     <div class="form-group">
         <label for="login" class="col-sm-2 control-label">Login:</label>

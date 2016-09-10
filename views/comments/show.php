@@ -17,6 +17,6 @@
 <ul class="pagination">
     <?php for ($j = 1; $j <= ($data['count_page']); $j++) : ?>
         <li <?= ($j == $_GET['pages']) ? 'class=active' : ''; ?>><a
-                href="/commentator/show/<?= $data['comment'][0]['id_user'] ?>/?pages=<?= $j; ?>"><?= $j; ?></a></li>
+                href="/comments/show/<?= $data['comment'][0]['id_user'] ?>/?pages=<?= $j; ?>"><?= $j; ?></a></li>
     <?php endfor; ?>
 </ul>

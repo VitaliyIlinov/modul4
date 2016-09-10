@@ -7,12 +7,12 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($data['tags'] as $key => $value) : ?>
+        <?php foreach ($data['category'] as $key => $value) : ?>
             <tr>
                 <td><?= $key ?></td>
                 <td><?= $value ?></td>
                 <td align="right">
-                    <a href="/admin/news/delete_tag/<?= $key ?>" onclick="return confirmDelete();">
+                    <a href="/admin/news/delete_category/<?= $key ?>" onclick="return confirmDelete();">
                         <button class="btn btn-sm btn-warning">delete</button>
                     </a>
                 </td>
@@ -21,11 +21,11 @@
         <tbody>
     </table>
 </div>
-<h2>Добавить тег:</h2>
+<h2>Добавить категорию:</h2>
 <div class="controls">
     <form method="post" autocomplete="off">
         <div class="entry input-group " >
-            <input class="form-control" name="new_tags[]" type="text" placeholder="Type something">
+            <input class="form-control" name="new_categories[]" type="text" placeholder="Type something">
                 <span class="input-group-btn">
               <button class="btn btn-success btn-add" type="button">
                   <span class="glyphicon glyphicon-plus"></span>

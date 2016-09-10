@@ -22,8 +22,8 @@
         <?php if ($cnt == 5) break; ?>
         <li>
             <a href="/news/list/<?= $value['id_news']; ?>">
-                <div><h1 style="text-align: center"><?= $value['title_news']; ?></h1><img
-                        src="/webroot/image/<?= $value['image_news']; ?>">
+                <div><h4 style="text-align: center"><?= $value['title_news']; ?></h4>
+                <img src="/webroot/image/<?= $value['image_news']; ?>">
             </a>
 </div>
 </li>
@@ -71,7 +71,7 @@
     <?php $i=1;foreach ($data['commentator'] as $commentator): ?>
         <tr>
             <td><?=$i++?></td>
-            <td><a href="/commentator/show/<?=$commentator['id_user']?>"><?=$commentator['login']?></a></td>
+            <td><a href="/comments/show/<?=$commentator['id_user']?>"><?=$commentator['login']?></a></td>
             <td><?=$commentator['cnt']?></td>
         </tr>
     <?php endforeach; ?>

@@ -1,1 +1,1 @@
-<h3 style="text-align: center;">THIS IS FOOTER</h3>
+<h3 style="text-align: center;">&copy;Vitaliy Ilinov</h3>

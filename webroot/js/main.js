@@ -76,6 +76,8 @@ $(document).ready(function () {
         var comment = $(this).find('textarea').val();
         $.post("/ajax/list/", {comment: comment, id_parent: id_parent, id_news: id_news},
             function (data) {
+                alert(data);
+                alert(data.success);
                 var $cnt = parseInt($('.badge').text());
                 $('.badge').html($cnt + 1);
                 var data = $(data);
@@ -185,28 +187,45 @@ $(document).ready(function () {
 });
 
 
-
-
-
-$(function()
-{
-    $(document).on('click','.btn-add', function(e)
-    {
+$(function () {
+    $(document).on('click', '.btn-add', function (e) {
         e.preventDefault();
-        var controlForm = $('.controls form:first'),
-            currentEntry = $(this).parents('.entry:first'),
-            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+        var controlForm = $('.controls form:first'),//первая форма в классе controls
+            currentEntry = $(this).parents('.entry:first'),//первый елемент с классом entry
+        //newEntry = $(currentEntry.clone()).appendTo(controlForm);//клон и вставка
+            newEntry = $(currentEntry.clone()).insertBefore($('.controls br'));//клон и вставка
 
-        newEntry.find('input').val('');
-        controlForm.find('.entry:not(:last) .btn-add')
-            .removeClass('btn-add').addClass('btn-remove')
-            .removeClass('btn-success').addClass('btn-danger')
-            .html('<span class="glyphicon glyphicon-minus"></span>');
-    }).on('click', '.btn-remove', function(e)
-    {
+        newEntry.find('input').val('');//обнуляет инпут
+        newEntry.removeClass('has-error has-success');//удаляет класс
+        controlForm.find('.entry:not(:last) .btn-add')//найти все кнопки кроме последнего
+            .removeClass('btn-add').addClass('btn-remove')//удалить и добавить класс
+            .removeClass('btn-success').addClass('btn-danger')//удалить и добавить класс
+            .html('<span class="glyphicon glyphicon-minus"></span>');//доавить картинку
+    }).on('click', '.btn-remove', function (e) {
         $(this).parents('.entry:first').remove();
-
         e.preventDefault();
         return false;
     });
 });
+
+$('.controls form').on('submit', function (event) {
+    var $form=$(this);
+    var $error=0;
+    $form.find("input[name^='new']").each(function (index) {
+       var $input=$(this);
+        if ( $input.val() == "") {
+            $input.parent().removeClass('has-success').addClass('has-error');
+            $error++;
+            return false;
+        }else{
+            $input.parent().removeClass('has-error').addClass('has-success');
+            heights.push($(element).height());
+        }
+    });
+   if($error>0){
+       event.preventDefault();
+       alert('Введите теги...');
+   }
+
+});
+

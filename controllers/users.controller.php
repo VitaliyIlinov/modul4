@@ -9,6 +9,26 @@ class UsersController extends Controller
         $this->model = new User();
     }
 
+    public function admin_user_list(){
+        if (isset($_GET['pages'])) {
+            $page = $_GET['pages'] - 1;
+        }
+        $page = !isset($page) ? 0 : $page;
+        $this->data['users']=$this->model->users($page,10);
+
+    }
+    public function admin_delete(){
+        if (isset($this->params[0])) {
+            $result = $this->model->admin_delete($this->params[0]);
+            if ($result) {
+                Session::setFlash('Category was deleted.');
+            } else {
+                Session::setFlash('Error.');
+            }
+        }
+        Router::redirect('/admin/users/user_list');
+    }
+
     public function admin_login()
     {
         if ($_POST && isset($_POST['login']) && isset($_POST['password'])) {

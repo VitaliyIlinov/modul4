@@ -8,8 +8,7 @@ class Model {
     {
         $this->db=App::$db;
     }
-    //удалить все кроме 2х первых.перемешать и вставить к тем 2м или
-    //
+    # удалить все кроме 2х первых.перемешать и вставить к тем 2м или
     public function getPromotion($id=null){
         if (!$id) {
             $sql = "SELECT * from promotion where is_active=1 order by cnt desc ";
@@ -30,5 +29,9 @@ class Model {
             $sql ="UPDATE promotion set cnt=cnt+1 where id={$id}";
             return $this->db->query($sql);
         }
+    }
+    public function admin_color(){
+        $sql="select * from setting";
+        return $this->db->query($sql);
     }
 }
