@@ -91,14 +91,6 @@
             </div>
         </form>
 </nav>
-
-<?php if (Session::hasFlash()) { ?>
-    <div class="starter-template">
-        <div class="alert alert-info" role="alert">
-            <?php Session::flash(); ?>
-        </div>
-    </div>
-<?php } ?>
 <br>
 <?php if (App::getRoutes()->getMethodPrefix() == null): ?>
     <div class="container-fluid">
@@ -122,6 +114,13 @@
                 <?php endfor; ?>
             </div>
             <div class="col-sm-8 col-sm-pull-2">
+                <?php if (Session::hasFlash()) { ?>
+                    <div class="starter-template">
+                        <div class="alert alert-info" role="alert">
+                            <?php Session::flash(); ?>
+                        </div>
+                    </div>
+                <?php } ?>
                 <?php include $this->path; ?>
             </div>
         </div>

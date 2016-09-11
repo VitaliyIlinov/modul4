@@ -82,9 +82,9 @@
         echo $comment;
     }
     ?>
-    <div id="test"></div>
 <?php else: ?>
     <div style="min-height: 200px; margin-top: 35px;">
+        <h3>Список Новостей:</h3>
         <ul class="list-unstyled">
             <?php foreach ($data['news'] as $key => $value): ?>
                 <li><a href="/news/list/<?= $value['id_news']; ?>"><?= $value['title_news']; ?> </a></li>

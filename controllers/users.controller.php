@@ -9,15 +9,18 @@ class UsersController extends Controller
         $this->model = new User();
     }
 
-    public function admin_user_list(){
+    public function admin_user_list()
+    {
         if (isset($_GET['pages'])) {
             $page = $_GET['pages'] - 1;
         }
         $page = !isset($page) ? 0 : $page;
-        $this->data['users']=$this->model->users($page,10);
+        $this->data['users'] = $this->model->users($page, 10);
 
     }
-    public function admin_delete(){
+
+    public function admin_delete()
+    {
         if (isset($this->params[0])) {
             $result = $this->model->admin_delete($this->params[0]);
             if ($result) {
@@ -53,20 +56,22 @@ class UsersController extends Controller
         if ($_POST && isset($_POST['login']) && isset($_POST['password'])) {
             $user = $this->model->getByLogin($_POST['login']);
             $hash = md5(Config::get('salt') . $_POST['password']);
-            if ($user && $user['is_active'] && $hash == $user['password']) {
+            if ($user && $user['is_active'] && $hash == $user['password'] && ($_POST['login']!=='admin')) {
+               // var_dump($user);exit;
                 Session::set('login', $user['login']);
                 Router::redirect('/');
-            }else{
+            } else {
                 Session::setFlash('Try again');
             }
         }
     }
-    
 
-    public function register(){
-        if ($_POST && isset($_POST['login']) && isset($_POST['password'])&& isset($_POST['email'])) {
-            $new_user=$this->model->addUser($_POST);
-            if($new_user){
+
+    public function register()
+    {
+        if ($_POST && isset($_POST['login']) && isset($_POST['password']) && isset($_POST['email'])) {
+            $new_user = $this->model->addUser($_POST);
+            if ($new_user) {
                 Session::set('login', $new_user['login']);
                 Session::setFlash('Congratulation');
             }

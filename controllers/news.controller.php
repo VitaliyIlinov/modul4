@@ -19,7 +19,7 @@ class NewsController extends Controller
 
 
         $page = !isset($page) ? 0 : $page;
-        $this->data['news'] = $this->model->getNewsListByPage($page, 10);
+        $this->data['news'] = $this->model->getNewsListByPage($page, 20);
         if (isset($params)&& !isset($_GET['pages'])) {
             $id = $params[0];
             $this->data = $this->model->getNewsListById($id);

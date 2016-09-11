@@ -76,8 +76,6 @@ $(document).ready(function () {
         var comment = $(this).find('textarea').val();
         $.post("/ajax/list/", {comment: comment, id_parent: id_parent, id_news: id_news},
             function (data) {
-                alert(data);
-                alert(data.success);
                 var $cnt = parseInt($('.badge').text());
                 $('.badge').html($cnt + 1);
                 var data = $(data);

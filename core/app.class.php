@@ -26,9 +26,9 @@ class App
         if ($layout == 'admin_' && Session::get('role') != 'admin') {
             if ($method_name !== 'admin_login') {
                 Router::redirect('/admin/users/login');//чтоб не безконечный редирект
-           }
+            }
         }
-        
+
         $controller_object = new $class_name();
 
         if (method_exists($controller_object, $method_name)) {
@@ -38,7 +38,8 @@ class App
             $content = $view_object->render();
             echo $content;
         } else {
-            throw new Exception('there is no Method : ' . $method_name . ' in controller :' . $class_name);
+            echo 'Sorry.There is no page';exit;
+            //throw new Exception('there is no Method : ' . $method_name . ' in controller :' . $class_name);
         }
     }
 }
